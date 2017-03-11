@@ -28,7 +28,7 @@ class BeController extends BaseController
         else
         {
             return Datatables::of(___PT___::query())
-            ->addColumn('action', function ($r) { return $this->_buildAction($r->id, $r->title); })
+            ->addColumn('action', function ($r) { return $this->_buildAction($r->id, $r->___FIELD_NAME___); })
             ->editColumn('status', function ($r) { return $r->status=='1' ? trans('global.active') : trans('global.inactive'); })
             ->editColumn('created_at', function ($r) { return formatDate($r->created_at, 5); })
             ->editColumn('updated_at', function ($r) { return $r->updated_at ? formatDate($r->updated_at, 5) : '-'; })
@@ -74,13 +74,13 @@ class BeController extends BaseController
     {
         $input  = Input::except('_token');
         
-        $input['url'] = str_slug($input['title']);
+        $input['url'] = str_slug($input['___FIELD_NAME___']);
         $input['status'] = val($input, 'status') ? 1 : 0;
 
         $status = $this->_saveData( new ___PT___(), [   
             //VALIDATOR
-            "title" => "required|unique:mod____SC___". ($input['id'] ? ",title,".$input['id'] : '')
-        ], $input, 'title');
+            "___FIELD_NAME___" => "required|unique:mod____SC___". ($input['id'] ? ",___FIELD_NAME___,".$input['id'] : '')
+        ], $input, '___FIELD_NAME___');
                 
         return Redirect( BeUrl( config('___SC___.info.alias') .(!$status ? ($input['id']?'/edit/'.$input['id']:'/add') : '') ) );
     }

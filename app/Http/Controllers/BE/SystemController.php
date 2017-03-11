@@ -25,15 +25,6 @@ class SystemController extends BaseController
     */
     function menu()
     {
-        $sts = $this->createModule('blog',[
-            'name' => 'Blog',
-            'alias' => 'blog',
-            'field_name' => 'title',
-            'field_alias' => 'Judul',
-            'description' => 'untuk manajemen blog',
-        ]);
-        echoPre($sts);exit;
-
         $this->dataView['list'] = $this->buildListMenu();
         $this->dataView['form'] = $this->buildFormMenu();
         
@@ -153,6 +144,7 @@ class SystemController extends BaseController
     function saveMenu()
     {
         $input  = Input::except('_token');
+        $module = $input['module'];unset($input['module']);
         
         $status = $this->_saveData( new Menu(), [   
             //VALIDATOR
@@ -175,6 +167,27 @@ class SystemController extends BaseController
                 }
             }
         }
+        else
+        {
+            //create Module
+            if ( $status && isset($module['check']) )
+            {
+                $sts = $this->createModule($input['url'],[
+                    'name' => $input['name'],
+                    'alias' => $input['url'],
+                    'field_name' => $module['field'],
+                    'field_alias' => $module['value'],
+                    'description' => $input['description'],
+                ]);
+
+                //updateMenu
+                if (Menu::where('id', $status)->update(['module_name'=>$sts['modulePath']]))
+                {
+                    $rdr = BeUrl($input['url']);
+                    $this->setNotif(trans('system/module.set_module', ['name'=>$input['name'], 'act'=>strtolower(trans('system/module.activate'))]), 'success');
+                }
+            }
+        }
 
         //set Menu
         if (!$input['id'] && $status)
@@ -190,6 +203,7 @@ class SystemController extends BaseController
         }
                 
         return Response()->json([ 
+            'rdr'    => isset($rdr) ? $rdr : null,
             'status' => $status, 
             'message'=> $this->_buildNotification(true),
             'form'   => $status ? base64_encode($this->buildFormMenu()) : null,
@@ -499,12 +513,13 @@ class SystemController extends BaseController
     */
     private function createModule($menuUrl, $value, $type='full_page')
     {
-        $return = ['dirs'=>[], 'files'=>[]];
         $moduleFrom = storage_path('module_creator/'.$type);
         $modulePath = str_replace(' ', '', ucwords(str_replace('-', ' ', $menuUrl)));
         $value['pt']= $modulePath;
         $value['sc']= strtolower($modulePath);
         $value['date'] = dateSQL();
+
+        $return = ['dirs'=>[], 'files'=>[], 'modulePath'=>$modulePath];
 
         if ( !file_exists(base_path('modules/'.$modulePath)) )
         {

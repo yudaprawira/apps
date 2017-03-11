@@ -13,5 +13,5 @@ class Blog extends Model
      */
     protected $table = 'mod_blog';
 
-    protected $fillable = ['title', 'url', 'status', 'created_by', 'updated_by'];
+    protected $fillable = ['judul', 'url', 'status', 'created_by', 'updated_by'];
 }

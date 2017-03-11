@@ -1,0 +1,25 @@
+{
+    "name": "Produk",
+    "alias": "produk",
+    "description": "Manajemen Produk",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Produk\\Providers\\SP"
+    ],
+    "aliases": [],
+    "files": [
+        "start.php"
+    ],
+    "requires": [],
+    "author": {
+        "name": "Yuda Prawira",
+        "site": "http:\/\/yuda.tk"
+    },
+    "info": {
+        "version": 1,
+        "date": "2017-03-11 12:48:23",
+        "changelog": ""
+    }
+}

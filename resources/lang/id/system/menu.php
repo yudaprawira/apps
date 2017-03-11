@@ -6,6 +6,7 @@ return [
     'icon'  => 'Ikon Menu',
     'desc'  => 'Deskripsi Menu',
     'parent'=> 'Anak dari menu',
-    'advance'=> 'Selengkapnya',
-    'hide_advance'=> 'Sembunyikan',
+    'create_module'=> 'Buat Module',
+    'field_name'=> 'Nama Kolom Pertama',
+    'field_value'=> 'Label Kolom Pertama',
 ];

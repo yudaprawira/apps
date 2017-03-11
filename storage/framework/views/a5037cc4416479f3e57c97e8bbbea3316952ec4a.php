@@ -25,11 +25,23 @@
               <label><?php echo e(trans('system/menu.desc')); ?></label><span class="char_count"></span>
               <textarea class="form-control" name="description" maxlength="75"><?php echo e(isset($description) ? $description : ''); ?></textarea>
             </div>
+            
+            <?php if( !isset($id) ): ?>  
+              <input type="checkbox" id="create_module" name="module[check]" value="1" checked="true"/> <?php echo e(trans('system/menu.create_module')); ?>
 
-            <a href="#" id="show_advance"><?php echo e(trans('system/menu.advance')); ?></a>
-            <div id="area-advance" style="display: none;">
-              test
-            </div>
+              <br/>
+              <div id="area-module">
+                <div class="form-group has-feedback">
+                  <label><?php echo e(trans('system/menu.field_name')); ?></label><span class="char_count"></span>
+                  <input type="text" class="form-control" name="module[field]" maxlength="15" placeholder="title" />
+                </div>
+                <div class="form-group has-feedback">
+                  <label><?php echo e(trans('system/menu.field_value')); ?></label><span class="char_count"></span>
+                  <input type="text" class="form-control" name="module[value]" maxlength="15" placeholder="Judul" />
+                </div>
+              </div>
+              <br/>
+            <?php endif; ?>
             
             <input type="hidden" name="id" value="<?php echo e(isset($id) ? $id : ''); ?>" />
             <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
@@ -40,26 +52,25 @@
 </div>
 <?php $__env->startPush('style'); ?>
 <style>
-#show_advance {
-  display: block;
-  text-align: center;
-  margin: 15px 0;
-  color: #696969;
-  position: relative;
+#area-module {
+    margin: 10px 0;
+    background: #eaeaea;
+    border: 1px solid #ddd;
+    padding: 5px;
 }
 </style>
 <?php $__env->stopPush(); ?>
 <?php $__env->startPush('scripts'); ?>
 <script>
-$(document).on('click', '#show_advance', function(){
-  $('#area-advance').toggle();
+$(document).ready(function(){
 
-  if ( $('#area-advance').is(':visible') )
-    $(this).text('<?php echo e(trans('system/menu.hide_advance')); ?>');
-  else
-    $(this).text('<?php echo e(trans('system/menu.advance')); ?>');
-  
-  return false;
-});
+  $("#create_module").on('ifChanged', function(e){
+      var isChecked = e.target.checked;
+      if (isChecked)
+        $('#area-module').slideDown();
+      else
+        $('#area-module').slideUp();
+    });
+})
 </script>
 <?php $__env->stopPush(); ?>

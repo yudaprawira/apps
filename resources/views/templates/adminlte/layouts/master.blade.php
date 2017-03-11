@@ -197,6 +197,8 @@
                           if ( dt.form ) form.closest('.box').replaceWith(atob(dt.form));
                           
                 	      if ( dt.message ) initNotif(atob(dt.message));
+
+                	      if ( dt.rdr ) window.location.href = dt.rdr;
             
                     	},
                 	}).done(function(){ loading(0) }); 

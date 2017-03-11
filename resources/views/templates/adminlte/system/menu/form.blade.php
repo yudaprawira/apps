@@ -25,11 +25,22 @@
               <label>{{ trans('system/menu.desc') }}</label><span class="char_count"></span>
               <textarea class="form-control" name="description" maxlength="75">{{ isset($description) ? $description : '' }}</textarea>
             </div>
-
-            <a href="#" id="show_advance">{{ trans('system/menu.advance') }}</a>
-            <div id="area-advance" style="display: none;">
-              test
-            </div>
+            
+            @if ( !isset($id) )  
+              <input type="checkbox" id="create_module" name="module[check]" value="1" checked="true"/> {{ trans('system/menu.create_module') }}
+              <br/>
+              <div id="area-module">
+                <div class="form-group has-feedback">
+                  <label>{{ trans('system/menu.field_name') }}</label><span class="char_count"></span>
+                  <input type="text" class="form-control" name="module[field]" maxlength="15" placeholder="title" />
+                </div>
+                <div class="form-group has-feedback">
+                  <label>{{ trans('system/menu.field_value') }}</label><span class="char_count"></span>
+                  <input type="text" class="form-control" name="module[value]" maxlength="15" placeholder="Judul" />
+                </div>
+              </div>
+              <br/>
+            @endif
             
             <input type="hidden" name="id" value="{{ isset($id) ? $id : '' }}" />
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
@@ -40,26 +51,25 @@
 </div>
 @push('style')
 <style>
-#show_advance {
-  display: block;
-  text-align: center;
-  margin: 15px 0;
-  color: #696969;
-  position: relative;
+#area-module {
+    margin: 10px 0;
+    background: #eaeaea;
+    border: 1px solid #ddd;
+    padding: 5px;
 }
 </style>
 @endpush
 @push('scripts')
 <script>
-$(document).on('click', '#show_advance', function(){
-  $('#area-advance').toggle();
+$(document).ready(function(){
 
-  if ( $('#area-advance').is(':visible') )
-    $(this).text('{{ trans('system/menu.hide_advance') }}');
-  else
-    $(this).text('{{ trans('system/menu.advance') }}');
-  
-  return false;
-});
+  $("#create_module").on('ifChanged', function(e){
+      var isChecked = e.target.checked;
+      if (isChecked)
+        $('#area-module').slideDown();
+      else
+        $('#area-module').slideUp();
+    });
+})
 </script>
 @endpush

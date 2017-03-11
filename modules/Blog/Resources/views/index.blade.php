@@ -6,14 +6,14 @@
             <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">Data {{ config('blog.info.name') }} </h3>
-                  <a href="{{ BeUrl(config('blog.info.alias').'/add') }}" class="btn btn-primary btn-flat btn-add pull-right">{{ trans('global.add') }} {{ config('page.info.name') }} </a>
+                  <a href="{{ BeUrl(config('blog.info.alias').'/add') }}" class="btn btn-primary btn-flat btn-add pull-right">{{ trans('global.add') }} {{ config('blog.info.name') }} </a>
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <table class="table table-striped table-bordered" id="list-table" data-url="{{ BeUrl(config('blog.info.alias')) }}" data-token="{{ csrf_token() }}">
                     <thead>
                     <tr>
                       <th data-sort="1" data-search="1" data-column="id" style="width: 10px">ID</th>
-                      <th data-sort="1" data-search="1" data-column="title">{{ trans('blog::global.title') }}</th>
+                      <th data-sort="1" data-search="1" data-column="judul">{{ trans('blog::global.judul') }}</th>
                       <th data-sort="1" data-search="1" data-column="status" class="col-md-1 nowrap">{{ trans('global.status') }}</th>
                       <th data-sort="1" data-search="1" data-column="created_at" class="col-md-1 nowrap">{{ trans('blog::global.created_at') }}</th>
                       <th data-sort="1" data-search="1" data-column="updated_at" class="col-md-1 nowrap">{{ trans('blog::global.updated_at') }}</th>

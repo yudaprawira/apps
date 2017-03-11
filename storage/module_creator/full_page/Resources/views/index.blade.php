@@ -6,7 +6,7 @@
             <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">Data {{ config('___SC___.info.name') }} </h3>
-                  <a href="{{ BeUrl(config('___SC___.info.alias').'/add') }}" class="btn btn-primary btn-flat btn-add pull-right">{{ trans('global.add') }} {{ config('page.info.name') }} </a>
+                  <a href="{{ BeUrl(config('___SC___.info.alias').'/add') }}" class="btn btn-primary btn-flat btn-add pull-right">{{ trans('global.add') }} {{ config('___SC___.info.name') }} </a>
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <table class="table table-striped table-bordered" id="list-table" data-url="{{ BeUrl(config('___SC___.info.alias')) }}" data-token="{{ csrf_token() }}">

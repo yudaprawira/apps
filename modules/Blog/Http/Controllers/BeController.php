@@ -28,7 +28,7 @@ class BeController extends BaseController
         else
         {
             return Datatables::of(Blog::query())
-            ->addColumn('action', function ($r) { return $this->_buildAction($r->id, $r->title); })
+            ->addColumn('action', function ($r) { return $this->_buildAction($r->id, $r->judul); })
             ->editColumn('status', function ($r) { return $r->status=='1' ? trans('global.active') : trans('global.inactive'); })
             ->editColumn('created_at', function ($r) { return formatDate($r->created_at, 5); })
             ->editColumn('updated_at', function ($r) { return $r->updated_at ? formatDate($r->updated_at, 5) : '-'; })
@@ -74,13 +74,13 @@ class BeController extends BaseController
     {
         $input  = Input::except('_token');
         
-        $input['url'] = str_slug($input['title']);
+        $input['url'] = str_slug($input['judul']);
         $input['status'] = val($input, 'status') ? 1 : 0;
 
         $status = $this->_saveData( new Blog(), [   
             //VALIDATOR
-            "title" => "required|unique:mod_blog". ($input['id'] ? ",title,".$input['id'] : '')
-        ], $input, 'title');
+            "judul" => "required|unique:mod_blog". ($input['id'] ? ",judul,".$input['id'] : '')
+        ], $input, 'judul');
                 
         return Redirect( BeUrl( config('blog.info.alias') .(!$status ? ($input['id']?'/edit/'.$input['id']:'/add') : '') ) );
     }

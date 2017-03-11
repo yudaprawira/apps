@@ -4,14 +4,14 @@
             <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">Data <?php echo e(config('blog.info.name')); ?> </h3>
-                  <a href="<?php echo e(BeUrl(config('blog.info.alias').'/add')); ?>" class="btn btn-primary btn-flat btn-add pull-right"><?php echo e(trans('global.add')); ?> <?php echo e(config('page.info.name')); ?> </a>
+                  <a href="<?php echo e(BeUrl(config('blog.info.alias').'/add')); ?>" class="btn btn-primary btn-flat btn-add pull-right"><?php echo e(trans('global.add')); ?> <?php echo e(config('blog.info.name')); ?> </a>
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <table class="table table-striped table-bordered" id="list-table" data-url="<?php echo e(BeUrl(config('blog.info.alias'))); ?>" data-token="<?php echo e(csrf_token()); ?>">
                     <thead>
                     <tr>
                       <th data-sort="1" data-search="1" data-column="id" style="width: 10px">ID</th>
-                      <th data-sort="1" data-search="1" data-column="title"><?php echo e(trans('blog::global.title')); ?></th>
+                      <th data-sort="1" data-search="1" data-column="judul"><?php echo e(trans('blog::global.judul')); ?></th>
                       <th data-sort="1" data-search="1" data-column="status" class="col-md-1 nowrap"><?php echo e(trans('global.status')); ?></th>
                       <th data-sort="1" data-search="1" data-column="created_at" class="col-md-1 nowrap"><?php echo e(trans('blog::global.created_at')); ?></th>
                       <th data-sort="1" data-search="1" data-column="updated_at" class="col-md-1 nowrap"><?php echo e(trans('blog::global.updated_at')); ?></th>
