@@ -176,4 +176,4 @@ function initCheckbox()
 
 </script>
 <?php $__env->stopPush(); ?>
-<?php echo $__env->make( config('app.template') . 'layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make( config('app.be_template') . 'layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

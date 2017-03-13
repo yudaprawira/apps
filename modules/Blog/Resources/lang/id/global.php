@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'judul' => 'Judul Blog',
+    'judul' => 'Judul Pos',
     'created_at' => 'Dibuat Tanggal',
     'updated_at' => 'Diedit Tanggal',
 ];

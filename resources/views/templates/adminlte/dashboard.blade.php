@@ -1,4 +1,4 @@
-@extends( config('app.template') . 'layouts.master')
+@extends( config('app.be_template') . 'layouts.master')
 
 @section('content')
     <!-- Main content -->

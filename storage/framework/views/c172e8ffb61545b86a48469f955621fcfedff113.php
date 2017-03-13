@@ -35,4 +35,4 @@
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make( config('app.template') . 'layouts.master_less', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make( config('app.be_template') . 'layouts.master_less', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

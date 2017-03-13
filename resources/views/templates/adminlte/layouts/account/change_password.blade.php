@@ -1,4 +1,4 @@
-@extends( config('app.template') . 'layouts.master_less')
+@extends( config('app.be_template') . 'layouts.master_less')
 
 @section('content')
     <div class="login-box">

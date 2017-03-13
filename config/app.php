@@ -124,7 +124,7 @@ return [
     |
     */
 
-    'template' => 'templates.adminlte.',
+    'template' => 'templates.frontend.default.',
     
     'be_template' => 'templates.adminlte.',
 
