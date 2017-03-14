@@ -4,8 +4,7 @@ namespace Modules\Page\Http\Controllers;
 
 use Illuminate\Routing\Controller,
     App\Http\Controllers\FE\BaseController,
-    Modules\Page\Models\Page,
-    Cache;
+    Modules\Page\Models\Page;
 
 class FeController extends BaseController
 {
@@ -15,10 +14,6 @@ class FeController extends BaseController
      */
     public function index()
     {
-        $test = Cache::rememberForever('views.page.index', function() {
-            return 'aaa bbb';//view($this->tmpl . 'Page.index', $this->dataView)
-        });
-
-        echo $test;
+        return view($this->tmpl.'.Page.index', $this->dataView);
     }
 }

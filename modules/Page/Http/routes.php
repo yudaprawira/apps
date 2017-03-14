@@ -13,7 +13,8 @@ Route::group(['middleware' => 'web', 'prefix' => config('app.backend').'/'.$info
 
 
 //FRONT END
-Route::group(['prefix' => $info['alias'], 'namespace' => 'Modules\Page\Http\Controllers'], function()
+Route::group(['middleware'=>'cached', 'prefix' => $info['alias'], 'namespace' => 'Modules\Page\Http\Controllers'], function()
 {
     Route::get('/', 'FeController@index');
+    Route::get('/{url}', 'FeController@index')->where('url', '[a-z0-9\-\_\+]+');
 });

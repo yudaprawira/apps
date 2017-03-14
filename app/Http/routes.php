@@ -90,4 +90,5 @@ Route::group(['prefix' => '/'], function()
     Route::get('/', 'FE\HomeController@index');
 });
         
-include_once __DIR__.'/helper.php';
+include_once __DIR__.'/../Helpers/core.php';
+include_once __DIR__.'/../Helpers/compress.php';
