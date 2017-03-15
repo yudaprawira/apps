@@ -175,7 +175,7 @@ class SystemController extends BaseController
                 $sts = $this->createModule($input['url'],[
                     'name' => $input['name'],
                     'alias' => $input['url'],
-                    'field_name' => $module['field'],
+                    'field_name' => str_slug($module['field'], '_'),
                     'field_alias' => $module['value'],
                     'description' => $input['description'],
                 ]);
@@ -588,15 +588,18 @@ class SystemController extends BaseController
                         }
                     }
                     //Create Database
-                    Schema::create('mod_'.$value['sc'], function (Blueprint $table) use($value) {
-                        $table->increments('id');
-                        $table->string($value['field_name'], 75)->index($value['field_name']);
-                        $table->string('url', 75)->index('url');
-                        $table->enum('status', ['1', '0'])->default('1')->index('status');
-                        $table->tinyInteger('created_by')->index('created_by');
-                        $table->tinyInteger('updated_by')->index('updated_by');
-                        $table->timestamps();
-                    });
+                    if (!Schema::hasTable('mod_'.$value['sc']))
+                    {
+                        Schema::create('mod_'.$value['sc'], function (Blueprint $table) use($value) {
+                            $table->increments('id');
+                            $table->string($value['field_name'], 75)->index($value['field_name']);
+                            $table->string('url', 75)->index('url');
+                            $table->enum('status', ['1', '0'])->default('1')->index('status');
+                            $table->tinyInteger('created_by')->index('created_by');
+                            $table->tinyInteger('updated_by')->index('updated_by');
+                            $table->timestamps();
+                        });
+                    }
                 }
             }
             return $return;

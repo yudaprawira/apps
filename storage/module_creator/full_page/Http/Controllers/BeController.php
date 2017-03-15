@@ -1,5 +1,5 @@
 <?php
-namespace Modules\___NAME___\Http\Controllers;
+namespace Modules\___PT___\Http\Controllers;
 
 use Illuminate\Routing\Controller,
     App\Http\Controllers\BE\BaseController,
@@ -29,6 +29,7 @@ class BeController extends BaseController
         {
             return Datatables::of(___PT___::query())
             ->addColumn('action', function ($r) { return $this->_buildAction($r->id, $r->___FIELD_NAME___); })
+            ->editColumn('___FIELD_NAME___', function ($r) { return createLink( url(config('___SC___.info.alias').'/'.$r->url.'.html'), $r->___FIELD_NAME___ ); })
             ->editColumn('status', function ($r) { return $r->status=='1' ? trans('global.active') : trans('global.inactive'); })
             ->editColumn('created_at', function ($r) { return formatDate($r->created_at, 5); })
             ->editColumn('updated_at', function ($r) { return $r->updated_at ? formatDate($r->updated_at, 5) : '-'; })
