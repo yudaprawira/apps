@@ -521,13 +521,13 @@ class SystemController extends BaseController
 
         $return = ['dirs'=>[], 'files'=>[], 'modulePath'=>$modulePath];
 
-        if ( !file_exists( config('modules.paths.modules').$modulePath ) )
+        if ( !file_exists( config('modules.paths.modules').'/'.$modulePath ) )
         {
             //get template
             if( file_exists( $moduleFrom ) )
             {
                 //create Module Directory
-                if ( mkdir( config('modules.paths.modules').$modulePath, 0777, true ) )
+                if ( mkdir( config('modules.paths.modules').'/'.$modulePath, 0777, true ) )
                 {
                     $dirsTop = glob($moduleFrom.'/*');
                     $dirsSub = glob($moduleFrom.'/**/*');
@@ -561,11 +561,11 @@ class SystemController extends BaseController
                         if ( is_dir($dir) )
                         {
                             //create Module Directory
-                            if ( !file_exists( base_path('modules/'.$modulePath.$targetName) ) )
+                            if ( !file_exists( config('modules.paths.modules').'/'.$modulePath.$targetName ) )
                             {
-                                if ( mkdir(base_path('modules/'.$modulePath.$targetName), 0777, true) )
+                                if ( mkdir(config('modules.paths.modules').'/'.$modulePath.$targetName, 0777, true) )
                                 {
-                                    $return['dirs'][] = base_path('modules/'.$modulePath.$targetName);
+                                    $return['dirs'][] = config('modules.paths.modules').'/'.$modulePath.$targetName;
                                 }
                             }
                         }
@@ -579,9 +579,9 @@ class SystemController extends BaseController
                                     $fileContent = str_replace('___'.strtoupper($k).'___', $v, $fileContent);
                                 }
                                 //save as file
-                                if (file_put_contents(base_path('modules/'.$modulePath.$targetName), $fileContent))
+                                if (file_put_contents(config('modules.paths.modules').'/'.$modulePath.$targetName, $fileContent))
                                 {
-                                    $return['files'][] = base_path('modules/'.$modulePath.$targetName);
+                                    $return['files'][] = config('modules.paths.modules').'/'.$modulePath.$targetName;
                                 }
                             }
 
