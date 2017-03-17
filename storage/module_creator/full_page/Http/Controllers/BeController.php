@@ -82,6 +82,13 @@ class BeController extends BaseController
             //VALIDATOR
             "___FIELD_NAME___" => "required|unique:mod____SC___". ($input['id'] ? ",___FIELD_NAME___,".$input['id'] : '')
         ], $input, '___FIELD_NAME___');
+
+        //clear cache
+        $cacheKey = config('___SC___.info.alias').'/'.$input['url'].'.html';
+        if(\Cache::has($cacheKey)) 
+        {
+            \Cache::forget($cacheKey); 
+        }
                 
         return Redirect( BeUrl( config('___SC___.info.alias') .(!$status ? ($input['id']?'/edit/'.$input['id']:'/add') : '') ) );
     }

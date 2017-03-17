@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-    test content 12 <?php echoPre($_SERVER['REQUEST_URI']) ?>
+    test content 12 aaabbbcccdddeeefff <?php echoPre($_SERVER['REQUEST_URI']) ?>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('style'); ?>

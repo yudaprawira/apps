@@ -32,6 +32,13 @@
               <br/>
               <div id="area-module">
                 <div class="form-group has-feedback">
+                  <label><?php echo e(trans('system/module.type_module')); ?></label>
+                  <select name="module[type_module]" class="form-control">
+                    <option value="full_page"><?php echo e(trans('system/module.full_module')); ?></option>
+                    <option value="part_page"><?php echo e(trans('system/module.part_module')); ?></option>
+                  </select>
+                </div>
+                <div class="form-group has-feedback">
                   <label><?php echo e(trans('system/menu.field_name')); ?></label><span class="char_count"></span>
                   <input type="text" class="form-control" name="module[field]" maxlength="15" placeholder="title" />
                 </div>

@@ -14,4 +14,7 @@ return [
     'empty_action'  => 'Silakan pilih aksinya',
     'notfound_module'  => 'Module :name tidak ditemukan',
     'exists_module'  => 'Module :name sudah ada',
+    'type_module'  => 'Tipe module',
+    'full_module'  => 'Formulir full halaman',
+    'part_module'  => 'Formulir sebelah index',
 ];

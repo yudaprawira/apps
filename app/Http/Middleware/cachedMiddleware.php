@@ -9,7 +9,7 @@ class cachedMiddleware
     /**
      * @var int
      */
-    protected $lifeTime = 10;
+    protected $lifeTime = 120;
 
     /**
      * @var Request
@@ -26,7 +26,7 @@ class cachedMiddleware
     public function handle($request, Closure $next)
     {
         $this->request = $request;
-
+        
         $this->removeGarbage();
 
         return $this->getResponse($next);
@@ -34,14 +34,15 @@ class cachedMiddleware
 
     protected function getResponse(Closure $next) 
     {
-        $cacheKey = $this->request->getPathInfo();
-
+        $cacheKey = trim($this->request->getPathInfo(), '/');
+        
         if(!\Cache::has($cacheKey)) {
             $response = $next($this->request);
 
             $response->original = '';
 
-            \Cache::put($cacheKey, $response, $this->lifeTime);
+            if ( !$response->exception )
+                \Cache::put($cacheKey, $response, $this->lifeTime);
         }
         else
         {

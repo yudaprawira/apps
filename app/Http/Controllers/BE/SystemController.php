@@ -178,7 +178,7 @@ class SystemController extends BaseController
                     'field_name' => str_slug($module['field'], '_'),
                     'field_alias' => $module['value'],
                     'description' => $input['description'],
-                ]);
+                ], $module['type_module']);
 
                 //updateMenu
                 if (Menu::where('id', $status)->update(['module_name'=>$sts['modulePath']]))
@@ -222,7 +222,7 @@ class SystemController extends BaseController
         if ( Request::isMethod('get') )
         {
             //get module
-            $modules = glob(base_path('modules/*/module.json'));
+            $modules = glob( config('modules.paths.modules') . '/*/module.json');
             $rowMods = array();
             if ( !empty($modules) )
             {
@@ -481,9 +481,9 @@ class SystemController extends BaseController
     */
     private function updateModule($moduleName, $value)
     {
-        if ( file_exists(base_path('modules/'.$moduleName.'/module.json')) )
+        if ( file_exists( config('modules.paths.modules').'/'.$moduleName.'/module.json' ))
         {
-            $file = base_path('modules/'.$moduleName.'/module.json');
+            $file = config('modules.paths.modules').'/'.$moduleName.'/module.json';
             $json = file_get_contents($file);
             $rowJson = json_decode($json, true);
             
@@ -521,13 +521,13 @@ class SystemController extends BaseController
 
         $return = ['dirs'=>[], 'files'=>[], 'modulePath'=>$modulePath];
 
-        if ( !file_exists(base_path('modules/'.$modulePath)) )
+        if ( !file_exists( config('modules.paths.modules').$modulePath ) )
         {
             //get template
             if( file_exists( $moduleFrom ) )
             {
                 //create Module Directory
-                if ( mkdir(base_path('modules/'.$modulePath), 0777, true ) )
+                if ( mkdir( config('modules.paths.modules').$modulePath, 0777, true ) )
                 {
                     $dirsTop = glob($moduleFrom.'/*');
                     $dirsSub = glob($moduleFrom.'/**/*');

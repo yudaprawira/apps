@@ -31,6 +31,13 @@
               <br/>
               <div id="area-module">
                 <div class="form-group has-feedback">
+                  <label>{{ trans('system/module.type_module') }}</label>
+                  <select name="module[type_module]" class="form-control">
+                    <option value="full_page">{{ trans('system/module.full_module') }}</option>
+                    <option value="part_page">{{ trans('system/module.part_module') }}</option>
+                  </select>
+                </div>
+                <div class="form-group has-feedback">
                   <label>{{ trans('system/menu.field_name') }}</label><span class="char_count"></span>
                   <input type="text" class="form-control" name="module[field]" maxlength="15" placeholder="title" />
                 </div>

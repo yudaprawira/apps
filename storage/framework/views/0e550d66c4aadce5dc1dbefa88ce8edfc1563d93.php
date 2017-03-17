@@ -199,7 +199,7 @@
                           
                           if ( dt.status ) oTable.ajax.reload();
                           
-                          if ( dt.form ) form.closest('.box').replaceWith(atob(dt.form));
+                          if ( dt.form ) {form.closest('.box').replaceWith(atob(dt.form));initPlugin();}
                           
                 	      if ( dt.message ) initNotif(atob(dt.message));
 
@@ -244,6 +244,7 @@
                           else
                           {
                 		      $('#formData').closest('.box').replaceWith(dt);
+                              initPlugin();
                           } 
                         },
                 	}).done(function(){ if ( isDelete ) { modal.find('.delete-loding').hide(); } else { loading(0); } });
@@ -251,13 +252,17 @@
                     return false;
                 });    
             }
-            
-            select2();
-            $('input:not(.excheck)').iCheck({
-              checkboxClass: 'icheckbox_square-green',
-              radioClass: 'iradio_square-green',
-              increaseArea: '20%' // optional
-            });
+
+            initPlugin();
+            function initPlugin()
+            {
+                select2();
+                $('input:not(.excheck)').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+                increaseArea: '20%' // optional
+                });
+            }
             $('[name=username]').focus();
             
             $(document).on('submit', 'form', function(){

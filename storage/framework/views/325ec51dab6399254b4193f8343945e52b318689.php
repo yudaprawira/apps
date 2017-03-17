@@ -15,8 +15,8 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        <label><?php echo e(trans('produk::global.nama_produk')); ?></label><span class="char_count"></span>
-                        <input type="text" class="form-control" name="nama_produk" maxlength="125" value="<?php echo e(val($dataForm, 'nama_produk')); ?>" />
+                        <label><?php echo e(trans('produk::global.produk')); ?></label><span class="char_count"></span>
+                        <input type="text" class="form-control" name="produk" maxlength="125" value="<?php echo e(val($dataForm, 'produk')); ?>" />
                     </div>
 
                     <input type="hidden" name="id" value="<?php echo e(val($dataForm, 'id')); ?>" />
@@ -54,4 +54,4 @@ tinymce.init({
 });
 </script>
 <?php $__env->stopPush(); ?>
-<?php echo $__env->make( config('app.template') . 'layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+<?php echo $__env->make( config('app.be_template') . 'layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

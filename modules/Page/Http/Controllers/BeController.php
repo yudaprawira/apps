@@ -83,6 +83,13 @@ class BeController extends BaseController
             "title" => "required|unique:mod_page". ($input['id'] ? ",title,".$input['id'] : ''),
             "text" => "required"
         ], $input, 'title');
+
+        //clear cache
+        $cacheKey = config('page.info.alias').'/'.$input['url'].'.html';
+        if(\Cache::has($cacheKey)) 
+        {
+            \Cache::forget($cacheKey); 
+        }
                 
         return Redirect( BeUrl( config('page.info.alias') .(!$status ? ($input['id']?'/edit/'.$input['id']:'/add') : '') ) );
     }
