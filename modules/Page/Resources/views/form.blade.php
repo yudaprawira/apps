@@ -21,10 +21,10 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        <label>{{ trans('page::global.text') }}</label>
-                        <textarea class="form-control" name="text">{{ val($dataForm, 'text') }}</textarea>
+                        <label>{{ trans('page::global.text') }}</label><span class="char_count"></span>
+                        <textarea class="form-control" name="text">{!! val($dataForm, 'text') !!}</textarea>
                     </div>
-                    
+
                     <input type="hidden" name="id" value="{{ val($dataForm, 'id') }}" />
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <button type="submit" class="btn btn-primary btn-flat">{{ val($dataForm, 'id') ? trans('global.act_edit') : trans('global.act_add') }}</button>

@@ -1,7 +1,7 @@
 {
     "name": "Halaman",
-    "alias": "halaman",
-    "description": "Modul ini digunakan untuk mangolah halaman statik",
+    "alias": "page",
+    "description": "Manajemen Halaman Statis",
     "keywords": [],
     "active": 1,
     "order": 0,
@@ -19,7 +19,7 @@
     },
     "info": {
         "version": 1,
-        "date": "2017-03-09",
+        "date": "2017-03-18 06:43:27",
         "changelog": ""
     }
 }

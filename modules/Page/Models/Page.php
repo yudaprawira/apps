@@ -13,5 +13,5 @@ class Page extends Model
      */
     protected $table = 'mod_page';
 
-    protected $fillable = ['title', 'url', 'status', 'text', 'created_by', 'updated_by'];
+    protected $fillable = ['title', 'text', 'url', 'status', 'created_by', 'updated_by'];
 }

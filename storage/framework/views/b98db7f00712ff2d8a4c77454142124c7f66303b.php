@@ -20,10 +20,10 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        <label><?php echo e(trans('page::global.text')); ?></label>
-                        <textarea class="form-control" name="text"><?php echo e(val($dataForm, 'text')); ?></textarea>
+                        <label><?php echo e(trans('page::global.text')); ?></label><span class="char_count"></span>
+                        <textarea class="form-control" name="text"><?php echo val($dataForm, 'text'); ?></textarea>
                     </div>
-                    
+
                     <input type="hidden" name="id" value="<?php echo e(val($dataForm, 'id')); ?>" />
                     <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
                     <button type="submit" class="btn btn-primary btn-flat"><?php echo e(val($dataForm, 'id') ? trans('global.act_edit') : trans('global.act_add')); ?></button>

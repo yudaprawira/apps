@@ -248,6 +248,18 @@
                 });    
             }
 
+            //UPLOAD
+            if ( $('#changeImage').length>0 && $('#imagePreview').length>0 && $('#inputImage').length>0 )
+            {
+                $(document).on('click', '#changeImage', function(){
+                    $('#inputImage').trigger('click');
+                    return false;
+                });
+                $(document).on('change', '#inputImage', function(){
+                    readURL(this, '#imagePreview');
+                });
+            }
+
             initPlugin();
             function initPlugin()
             {
@@ -258,6 +270,19 @@
                 increaseArea: '20%' // optional
                 });
             }
+            function readURL(input, elm) 
+            {
+                if (input.files && input.files[0]) 
+                {
+                    var reader = new FileReader();            
+                    reader.onload = function (e) {
+                        
+                        $(elm).attr('src', e.target.result);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
             $('[name=username]').focus();
             
             $(document).on('submit', 'form', function(){

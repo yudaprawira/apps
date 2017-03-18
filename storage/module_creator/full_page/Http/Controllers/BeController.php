@@ -75,7 +75,7 @@ class BeController extends BaseController
     {
         $input  = Input::except('_token');
         
-        $input['url'] = str_slug($input['___FIELD_NAME___']);
+        $input['url'] = str_slug(trim($input['___FIELD_NAME___']));
         $input['status'] = val($input, 'status') ? 1 : 0;
 
         $status = $this->_saveData( new ___PT___(), [   

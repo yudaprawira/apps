@@ -2,31 +2,19 @@
 
 namespace Modules\Page\Http\Controllers;
 
-use Illuminate\Routing\Controller,
-    App\Http\Controllers\FE\BaseController,
-    Modules\Page\Models\Page;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Controller;
 
-class FeController extends BaseController
+class FeController extends Controller
 {
     /**
      * Display a listing of the resource.
      * @return Response
      */
-    public function index($url='')
+    public function index()
     {
-        if ( $url )
-        {
-            $this->dataView['row'] = Page::where('url', $url)->first();
-            
-            if( !$this->dataView['row'] ) abort(404);
-
-            $this->dataView['title'] = $this->dataView['row']->title;
-
-            return view($this->tmpl.'.Page.detail', $this->dataView);
-        }
-        else
-        {
-            return view($this->tmpl.'.Page.index', $this->dataView);
-        }
+        return 'Front End Here';
     }
+
 }
