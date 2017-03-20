@@ -12,7 +12,7 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="text-center">
-                        <img  src="{{ asset('/global/images/no-image.png') }}" id="imagePreview">
+                        <img  src="{{ val($dataForm, 'image') ? asset(val($dataForm, 'image')) : asset('/global/images/no-image.png') }}" id="imagePreview">
                     </div>
                 </div>
             </div>

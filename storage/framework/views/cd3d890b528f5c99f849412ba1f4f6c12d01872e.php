@@ -10,7 +10,7 @@
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <div class="text-center">
-                        <img  src="<?php echo e(asset('/global/images/no-image.png')); ?>" id="imagePreview">
+                        <img  src="<?php echo e(val($dataForm, 'image') ? asset(val($dataForm, 'image')) : asset('/global/images/no-image.png')); ?>" id="imagePreview">
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Session,
+use Session, Image,
     Illuminate\Foundation\Bus\DispatchesJobs,
     Illuminate\Routing\Controller as BaseController,
     Illuminate\Foundation\Validation\ValidatesRequests,
@@ -76,4 +76,66 @@ class Controller extends BaseController
         
         return $encrypt ? base64_encode($mesage) : $mesage;
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | UPLOAD IMAGE
+    |--------------------------------------------------------------------------
+    |@param : $img Object file
+    |@param : $mainDir String name parent directories ex:book
+    |@param : $size Array ex:['600x800', '200x300']
+    |@param : $urlName String ex:abc 
+    |@return : abc-600x800.jpg 
+    */
+    public function _uploadImage($img, $mainDir, $size, $urlName='')
+    {
+        $ret = array();
+
+        if ( $img && !empty($size) )
+        {
+            $path = $mainDir."/".date("Y/m/d/");
+
+            //mkdir
+            if ( !file_exists( public_path($path) ) ) mkdir( public_path($path), 0777, true );
+
+            foreach ( $size as $s )
+            {
+                $arrSize = explode('x', $s);
+
+                if ( isset($arrSize[1]) )
+                {
+                    $urlName = strtolower($urlName ? $urlName : uniqid());
+
+                    $filename  = $urlName.'-'.$s.'.'.$img->getClientOriginalExtension();
+
+                    $realPath = public_path($path . $filename);
+
+                    if ($r = Image::make($img->getRealPath())->resize($arrSize[0], $arrSize[1], function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->save($realPath))
+                    {
+                        $ret[$s] = $path.$r->basename;
+                    }
+                }
+            }
+        }
+        
+        return $ret;
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CLEAR CACHE
+    |--------------------------------------------------------------------------
+    |@param : $cacheKey String Key of Cache
+    */
+    public function clearCache($cacheKey)
+    {
+        //clear cache
+        if(\Cache::has($cacheKey)) 
+        {
+            \Cache::forget($cacheKey); 
+        }
+    }
+
 }

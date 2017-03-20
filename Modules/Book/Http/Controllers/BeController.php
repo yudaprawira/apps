@@ -6,7 +6,7 @@ use Illuminate\Routing\Controller,
     Modules\Book\Models\Book,
     Yajra\Datatables\Datatables;
 
-use Input, Session, Request, Redirect, Image;
+use Input, Session, Request, Redirect;
 
 class BeController extends BaseController
 {
@@ -78,37 +78,25 @@ class BeController extends BaseController
         $input['url'] = str_slug(trim($input['title']));
         $input['status'] = val($input, 'status') ? 1 : 0;
 
-        $image = $input['image']; unset($input['image']);
+        $image = isset($input['image']) ? $input['image'] : null; unset($input['image']);
 
         $status = $this->_saveData( new Book(), [   
             //VALIDATOR
             "title" => "required|unique:mod_book". ($input['id'] ? ",title,".$input['id'] : '')
         ], $input, 'title');
 
-        $filename  = time() . '.' . $image->getClientOriginalExtension();
-
-        $path = public_path('book/' . $filename);
-
-        Image::make($image->getRealPath())->resize(600, 800, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($path);
-
-        $filename  = time() . '_thumb.' . $image->getClientOriginalExtension();
-
-        $path = public_path('book/' . $filename);
-
-        Image::make($image->getRealPath())->resize(200, 300, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($path);
-
-
-        //clear cache
-        $cacheKey = config('book.info.alias').'/'.$input['url'].'.html';
-        if(\Cache::has($cacheKey)) 
+        if ( $status && $image )
         {
-            \Cache::forget($cacheKey); 
+            $image = $this->_uploadImage($image, 'book', ['600x800', '200x300'], $input['url']);
+            
+            if ( isset($image['600x800']) )
+            {
+                Book::where('id', $status)->update(['image'=>$image['600x800']]);
+            }
         }
-                
+
+        $this->clearCache( config('book.info.alias').'/'.$input['url'].'.html' );
+
         return Redirect( BeUrl( config('book.info.alias') .(!$status ? ($input['id']?'/edit/'.$input['id']:'/add') : '') ) );
     }
 }

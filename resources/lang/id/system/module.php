@@ -16,5 +16,6 @@ return [
     'exists_module'  => 'Module :name sudah ada',
     'type_module'  => 'Tipe module',
     'full_module'  => 'Formulir full halaman',
+    'full_module_image'  => 'Formulir full halaman dengan gambar',
     'part_module'  => 'Formulir sebelah index',
 ];

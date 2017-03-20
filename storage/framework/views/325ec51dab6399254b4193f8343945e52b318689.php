@@ -15,8 +15,8 @@
                     </div>
 
                     <div class="form-group has-feedback">
-                        <label><?php echo e(trans('produk::global.produk')); ?></label><span class="char_count"></span>
-                        <input type="text" class="form-control" name="produk" maxlength="125" value="<?php echo e(val($dataForm, 'produk')); ?>" />
+                        <label><?php echo e(trans('produk::global.produkku')); ?></label><span class="char_count"></span>
+                        <input type="text" class="form-control" name="produkku" maxlength="125" value="<?php echo e(val($dataForm, 'produkku')); ?>" />
                     </div>
 
                     <input type="hidden" name="id" value="<?php echo e(val($dataForm, 'id')); ?>" />

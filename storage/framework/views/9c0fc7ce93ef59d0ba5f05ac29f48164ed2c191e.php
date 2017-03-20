@@ -11,7 +11,7 @@
                     <thead>
                     <tr>
                       <th data-sort="1" data-search="1" data-column="id" style="width: 10px">ID</th>
-                      <th data-sort="1" data-search="1" data-column="produk"><?php echo e(trans('produk::global.produk')); ?></th>
+                      <th data-sort="1" data-search="1" data-column="produkku"><?php echo e(trans('produk::global.produkku')); ?></th>
                       <th data-sort="1" data-search="1" data-column="status" class="col-md-1 nowrap"><?php echo e(trans('global.status')); ?></th>
                       <th data-sort="1" data-search="1" data-column="created_at" class="col-md-1 nowrap"><?php echo e(trans('produk::global.created_at')); ?></th>
                       <th data-sort="1" data-search="1" data-column="updated_at" class="col-md-1 nowrap"><?php echo e(trans('produk::global.updated_at')); ?></th>

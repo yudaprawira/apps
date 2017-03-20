@@ -590,10 +590,16 @@ class SystemController extends BaseController
                     //Create Database
                     if (!Schema::hasTable('mod_'.$value['sc']))
                     {
-                        Schema::create('mod_'.$value['sc'], function (Blueprint $table) use($value) {
+                        Schema::create('mod_'.$value['sc'], function (Blueprint $table) use($value, $type) {
                             $table->increments('id');
                             $table->string($value['field_name'], 75)->index($value['field_name']);
                             $table->string('url', 75)->index('url');
+
+                            if ( strpos($type, 'image') )
+                            {
+                                $table->string('image', 255);
+                            }
+
                             $table->enum('status', ['1', '0'])->default('1')->index('status');
                             $table->tinyInteger('created_by')->index('created_by');
                             $table->tinyInteger('updated_by')->index('updated_by');
