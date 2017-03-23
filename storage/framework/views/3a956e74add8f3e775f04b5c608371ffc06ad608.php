@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="text-center nowrap">
     <!--div class="btn-group"-->
       <a href="<?php echo e($url_edit); ?>" class="btn btn-default btn-flat btn-xs btn-edit" title="<?php echo e(trans('global.edit')); ?>"> <i class="glyphicon glyphicon-pencil"></i> <?php echo e(trans('global.edit')); ?></a>
       <button type="button" class="btn btn-danger btn-flat btn-xs" title="<?php echo e(trans('global.delete')); ?>" data-toggle="modal" data-target="#modalConfirmation-<?php echo e($id); ?>" data-backdrop="static"> <i class="glyphicon glyphicon-trash"></i> </button>

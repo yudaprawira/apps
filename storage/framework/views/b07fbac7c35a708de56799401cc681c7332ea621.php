@@ -10,7 +10,7 @@
                     <thead>
                     <tr>
                       <th data-sort="1" data-search="1" data-column="id" style="width: 10px">ID</th>
-                      <th data-sort="1" data-search="1" data-column="tag"><?php echo e(trans('tag::global.tag')); ?></th>
+                      <th data-sort="1" data-search="1" data-column="title"><?php echo e(trans('tag::global.title')); ?></th>
                       <th data-sort="1" data-search="1" data-column="status" class="col-md-1 nowrap"><?php echo e(trans('global.status')); ?></th>
                       <th data-sort="1" data-search="1" data-column="created_at" class="col-md-1 nowrap"><?php echo e(trans('tag::global.created_at')); ?></th>
                       <th data-sort="1" data-search="1" data-column="updated_at" class="col-md-1 nowrap"><?php echo e(trans('tag::global.updated_at')); ?></th>

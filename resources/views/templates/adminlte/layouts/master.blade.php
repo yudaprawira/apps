@@ -183,25 +183,70 @@
                 //SUBMIT
                 $(document).on('submit', '#formData', function(){
                     
-                    var form = $(this);
-                    
-                    $.ajax({
-                		type		: 'POST',
-                		url			: form.attr('action'),
-                        data        : form.serialize(),
-                		beforeSend	: function(xhr) { loading(1) },
-                		success		: function(dt){
-                          
-                          if ( dt.status ) oTable.ajax.reload();
-                          
-                          if ( dt.form ) {form.closest('.box').replaceWith(atob(dt.form));initPlugin();}
-                          
-                	      if ( dt.message ) initNotif(atob(dt.message));
+                    if ( $('#inputImage').length>0 ) 
+                    {
+                        var form = $(this);
+                        var formData = new FormData();
+                        formData.append('file', $('#inputImage')[0].files[0]);
+                        formData.append('post', form.serialize());
+                        formData.append('_token', '".csrf_token()."');
+                        
+                        $.ajax({
+                            type		: 'POST',
+                            url			: form.attr('action'),
+                            data        : formData,
+                            cache       : false,
+                            contentType : false,
+                            processData : false,
+                            beforeSend	: function(xhr) { loading(1) },
+                            xhr: function() {  // custom xhr
+                                myXhr = $.ajaxSettings.xhr();
+                                if(myXhr.upload){ // if upload property exists
+                                    myXhr.upload.addEventListener('progress', function(e){
+                                        var percent = (e.loaded / e.total) * 100;
+                                        console.log(percent);
+                                    }, false); // progressbar
+                                }
+                                return myXhr;
+                            },
+                            error: errorHandler = function() {
+                                alert('Something went wrong!');
+                            },
+                            success		: function(dt){
+                            
+                            if ( dt.status ) oTable.ajax.reload();
+                            
+                            if ( dt.form ) {form.closest('.box').replaceWith(atob(dt.form));initPlugin();}
+                            
+                            if ( dt.message ) initNotif(atob(dt.message));
 
-                	      if ( dt.rdr ) window.location.href = dt.rdr;
-            
-                    	},
-                	}).done(function(){ loading(0) }); 
+                            if ( dt.rdr ) window.location.href = dt.rdr;
+                
+                            },
+                        }).done(function(){ loading(0) }); 
+                    }
+                    else
+                    {    
+                        var form = $(this);
+                        
+                        $.ajax({
+                            type		: 'POST',
+                            url			: form.attr('action'),
+                            data        : form.serialize(),
+                            beforeSend	: function(xhr) { loading(1) },
+                            success		: function(dt){
+                            
+                            if ( dt.status ) oTable.ajax.reload();
+                            
+                            if ( dt.form ) {form.closest('.box').replaceWith(atob(dt.form));initPlugin();}
+                            
+                            if ( dt.message ) initNotif(atob(dt.message));
+
+                            if ( dt.rdr ) window.location.href = dt.rdr;
+                
+                            },
+                        }).done(function(){ loading(0) }); 
+                    }
                     
                     return false;
                 });

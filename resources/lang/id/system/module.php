@@ -18,4 +18,5 @@ return [
     'full_module'  => 'Formulir full halaman',
     'full_module_image'  => 'Formulir full halaman dengan gambar',
     'part_module'  => 'Formulir sebelah index',
+    'part_module_image'  => 'Formulir sebelah index dengan gambar',
 ];

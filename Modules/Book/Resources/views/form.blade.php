@@ -47,19 +47,6 @@
 </form>
 @stop
 
-@push('style')
-<style>
-#imagePreview {
-    width: 100%;
-}
-#inputImage {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-}
-</style>
-@endpush
-
 @push('scripts')
 <script src="{{ asset('/global/js/tinymce/js/tinymce/tinymce.min.js') }}"></script>
 <script>

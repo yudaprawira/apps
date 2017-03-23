@@ -36,6 +36,7 @@
                     <option value="full_page">{{ trans('system/module.full_module') }}</option>
                     <option value="full_page_image">{{ trans('system/module.full_module_image') }}</option>
                     <option value="part_page">{{ trans('system/module.part_module') }}</option>
+                    <option value="part_page_image">{{ trans('system/module.part_module_image') }}</option>
                   </select>
                 </div>
                 <div class="form-group has-feedback">

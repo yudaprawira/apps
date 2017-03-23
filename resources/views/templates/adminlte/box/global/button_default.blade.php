@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="text-center nowrap">
     <!--div class="btn-group"-->
       <a href="{{ $url_edit }}" class="btn btn-default btn-flat btn-xs btn-edit" title="{{ trans('global.edit') }}"> <i class="glyphicon glyphicon-pencil"></i> {{ trans('global.edit') }}</a>
       <button type="button" class="btn btn-danger btn-flat btn-xs" title="{{ trans('global.delete') }}" data-toggle="modal" data-target="#modalConfirmation-{{$id}}" data-backdrop="static"> <i class="glyphicon glyphicon-trash"></i> </button>
