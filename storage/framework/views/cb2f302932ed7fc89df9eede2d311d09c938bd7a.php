@@ -14,14 +14,24 @@
                 </div>
 
                 <div class="form-group has-feedback">
-                    <label><?php echo e(trans('kategori::global.name')); ?></label><span class="char_count"></span>
-                    <input type="text" class="form-control" name="name" maxlength="125" value="<?php echo e(val($dataForm, 'name')); ?>" />
+                    <label><?php echo e(trans('kategori::global.induk')); ?></label>
+                    <select name="induk" class="form-control">
+                            <option>---<?php echo e(trans('kategori::global.choose_induk')); ?>---</option>
+                        <?php foreach( $category as $k=>$v ): ?>
+                            <option value="<?php echo e($k); ?>" <?php echo e(val($dataForm, 'induk')==$k ? 'selected' : ''); ?> ><?php echo e($v); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                
+                <div class="form-group has-feedback">
+                    <label><?php echo e(trans('kategori::global.kategori')); ?></label><span class="char_count"></span>
+                    <input type="text" class="form-control" name="kategori" maxlength="125" value="<?php echo e(val($dataForm, 'kategori')); ?>" />
                 </div>
 
                 <input type="hidden" name="id" value="<?php echo e(val($dataForm, 'id')); ?>" />
                 <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
                 <button type="submit" class="btn btn-primary btn-flat"><?php echo e(val($dataForm, 'id') ? trans('global.act_edit') : trans('global.act_add')); ?></button>
-                <a href="<?php echo e(BeUrl(config('kategori.info.alias'))); ?>" class="btn btn-default btn-flat btn-reset"><?php echo e(trans('global.act_back')); ?></a>
+                <a href="<?php echo e(BeUrl(config('kategori.info.alias').'/edit/0')); ?>" class="btn btn-default btn-flat btn-reset"><?php echo e(trans('global.act_back')); ?></a>
                 </form>
                 
             </div><!-- /.box-body -->

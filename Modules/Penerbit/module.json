@@ -1,0 +1,25 @@
+{
+    "name": "Penerbit",
+    "alias": "penerbit",
+    "description": "Mengelola penerbit buku",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Penerbit\\Providers\\SP"
+    ],
+    "aliases": [],
+    "files": [
+        "start.php"
+    ],
+    "requires": [],
+    "author": {
+        "name": "Yuda Prawira",
+        "site": "http:\/\/yuda.tk"
+    },
+    "info": {
+        "version": 1,
+        "date": "2017-03-24 22:43:33",
+        "changelog": ""
+    }
+}

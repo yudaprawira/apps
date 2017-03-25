@@ -120,6 +120,8 @@ function formatDate($fullDate=null, $format=1)
 
 function formatNumber($number, $dec=0, $currency=false, $symbol='Rp ', $isPrefix=true)
 {
+    $number = $number ? $number : 0;
+    
     if ( $isPrefix )
         return ($currency ? $symbol : '').number_format($number, $dec, ',', '.');
     else

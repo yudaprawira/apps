@@ -14,6 +14,7 @@
                     <tr>
                       <th data-sort="1" data-search="1" data-column="id" style="width: 10px">ID</th>
                       <th data-sort="1" data-search="1" data-column="title">{{ trans('book::global.title') }}</th>
+                      <th data-sort="1" data-search="1" data-column="kategori" class="col-md-1 nowrap">{{ trans('book::global.kategori') }}</th>
                       <th data-sort="1" data-search="1" data-column="status" class="col-md-1 nowrap">{{ trans('global.status') }}</th>
                       <th data-sort="1" data-search="1" data-column="created_at" class="col-md-1 nowrap">{{ trans('book::global.created_at') }}</th>
                       <th data-sort="1" data-search="1" data-column="updated_at" class="col-md-1 nowrap">{{ trans('book::global.updated_at') }}</th>
@@ -34,7 +35,8 @@
 }
 #list-table td:nth-child(3),
 #list-table td:nth-child(4),
-#list-table td:nth-child(5){
+#list-table td:nth-child(5),
+#list-table td:nth-child(6){
   white-space: nowrap;
   text-align: center;
 }

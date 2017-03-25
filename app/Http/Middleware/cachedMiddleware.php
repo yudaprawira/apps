@@ -9,7 +9,7 @@ class cachedMiddleware
     /**
      * @var int
      */
-    protected $lifeTime = 120;
+    protected $lifeTime = 7;//minute
 
     /**
      * @var Request

@@ -84,7 +84,7 @@ Route::group(['prefix' => config('app.backend')], function()
 });
 
 //FRONTEND
-Route::group(['prefix' => '/'], function()
+Route::group(['middleware'=>'web', 'prefix' => '/'], function()
 {
 
     Route::get('/', 'FE\HomeController@index');

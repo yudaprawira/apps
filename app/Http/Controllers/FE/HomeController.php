@@ -23,6 +23,10 @@ class HomeController extends BaseController
     */
     function index() 
     {
-        return 'home';
+        $this->dataView['headline'] = getBook()->where('headline', '1')->get();
+
+        $this->dataView['terjual'] = getBook()->where('terjual', '1')->limit(3)->get();
+        
+        return view($this->tmpl . 'homepage', $this->dataView);
     }
 }

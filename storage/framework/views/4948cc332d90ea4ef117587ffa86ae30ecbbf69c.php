@@ -10,10 +10,9 @@
                     <thead>
                     <tr>
                       <th data-sort="1" data-search="1" data-column="id" style="width: 10px">ID</th>
-                      <th data-sort="1" data-search="1" data-column="name"><?php echo e(trans('kategori::global.name')); ?></th>
+                      <th data-sort="1" data-search="1" data-column="kategori"><?php echo e(trans('kategori::global.kategori')); ?></th>
+                      <th data-sort="1" data-search="1" data-column="induk" class="col-md-1 nowrap"><?php echo e(trans('kategori::global.induk')); ?></th>
                       <th data-sort="1" data-search="1" data-column="status" class="col-md-1 nowrap"><?php echo e(trans('global.status')); ?></th>
-                      <th data-sort="1" data-search="1" data-column="created_at" class="col-md-1 nowrap"><?php echo e(trans('kategori::global.created_at')); ?></th>
-                      <th data-sort="1" data-search="1" data-column="updated_at" class="col-md-1 nowrap"><?php echo e(trans('kategori::global.updated_at')); ?></th>
                       <th data-sort="0" data-search="0" data-column="action" style="width: 90px;white-space: nowrap;"><?php echo e(trans('global.action')); ?></th>
                     </tr>
                     </thead>

@@ -2,7 +2,9 @@
 
 return [
     
-    'title' => 'YP APP',
+    'title' => 'TOKO BUKU',
+    
+    'slogan' => 'Offering a wide selection of books on thousands of topics at low prices to satisfy any book-lover!',
 
     /*
     |--------------------------------------------------------------------------

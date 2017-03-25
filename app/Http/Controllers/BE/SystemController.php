@@ -144,7 +144,7 @@ class SystemController extends BaseController
     function saveMenu()
     {
         $input  = Input::except('_token');
-        $module = $input['module'];unset($input['module']);
+        $module = isset($input['module']) ? $input['module'] : null;unset($input['module']);
         
         $status = $this->_saveData( new Menu(), [   
             //VALIDATOR

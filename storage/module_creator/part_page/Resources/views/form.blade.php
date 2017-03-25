@@ -20,7 +20,7 @@
                 <input type="hidden" name="id" value="{{ val($dataForm, 'id') }}" />
                 <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <button type="submit" class="btn btn-primary btn-flat">{{ val($dataForm, 'id') ? trans('global.act_edit') : trans('global.act_add') }}</button>
-                <a href="{{ BeUrl(config('___SC___.info.alias')) }}" class="btn btn-default btn-flat btn-reset">{{ trans('global.act_back') }}</a>
+                <a href="{{ BeUrl(config('___SC___.info.alias').'/edit/0') }}" class="btn btn-default btn-flat btn-reset">{{ trans('global.act_back') }}</a>
                 </form>
                 
             </div><!-- /.box-body -->

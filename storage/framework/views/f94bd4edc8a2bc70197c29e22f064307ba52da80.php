@@ -1,247 +1,276 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><?php echo e($title); ?></title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="<?php echo e($pub_url); ?>/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="<?php echo e(asset('/global/font-awesome-4.6.1/css/font-awesome.min.css')); ?>">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="<?php echo e(asset('/global/ionicons-master/css/ionicons.min.css')); ?>">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo e($pub_url); ?>/dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="<?php echo e($pub_url); ?>/dist/css/skins/_all-skins.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="<?php echo e($pub_url); ?>/plugins/iCheck/square/green.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="<?php echo e($pub_url); ?>/plugins/iCheck/flat/green.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="<?php echo e($pub_url); ?>/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="<?php echo e($pub_url); ?>/plugins/datepicker/datepicker3.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="<?php echo e($pub_url); ?>/plugins/daterangepicker/daterangepicker-bs3.css">
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet" href="<?php echo e($pub_url); ?>/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-    <!-- Select2 -->
-    <link rel="stylesheet" href="<?php echo e($pub_url); ?>/plugins/select2/select2.min.css">
-    
-    <!-- Bootstrap time Picker -->
-    <link rel="stylesheet" href="<?php echo e($pub_url); ?>/plugins/timepicker/bootstrap-timepicker.min.css">
-  
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="/global/js/html5shiv.min.js"></script>
-        <script src="/global/js/respond.min.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" href="<?php echo e(asset('/global/css/datatables.bootstrap.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('/global/css/fixedColumns.bootstrap.min.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('/global/css/token-input-facebook.css')); ?>"/>
-    <link rel="stylesheet" href="<?php echo e(asset('/global/css/jquery.datetimepicker.min.css')); ?>"/>
-    <!-- Main -->
-    <link rel="stylesheet" href="<?php echo e(asset('/global/css/main.css')); ?>"/>
-    
-    <?php echo $__env->yieldPushContent('style'); ?>
-  </head>
-  <body class="hold-transition skin-green sidebar-mini">
-    <div class="wrapper box" style="border-top: 0;">
-        
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        
-        <!-- Main content -->
-        <section class="content">
-            <?php echo $__env->yieldContent('content'); ?>            
-        </section>
-      </div>
-      
-    </div><!-- ./wrapper -->
-    
-    <!-- Notification -->
-    <?php echo $notif; ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-    
-    <!-- jQuery 2.1.4 -->
-    <script src="<?php echo e($pub_url); ?>/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="<?php echo e(asset('/global/js/jquery-ui.min.js')); ?>"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-      $.widget.bridge('uibutton', $.ui.button);
+<!-- Mirrored from html.crunchpress.com/book-store/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 22 Mar 2017 05:22:19 GMT -->
+<head>
+<title><?php echo e($title); ?></title>
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<!--[if lt IE 9]>
+	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width">
+ 
+<link href="<?php echo e($pub_url); ?>/css/style.css" rel="stylesheet" type="text/css"/> 
+<link href="<?php echo e($pub_url); ?>/css/bs.css" rel="stylesheet" type="text/css"/> 
+<link rel="stylesheet" type="text/css" href="<?php echo e($pub_url); ?>/css/main-slider.css"/> 
+<!--[if lte IE 10]><link rel="stylesheet" type="text/css" href="<?php echo e($pub_url); ?>/css/customIE.css" /><![endif]-->
+<link href="<?php echo e($pub_url); ?>/css/font-awesome.css" rel="stylesheet" type="text/css"/> 
+<link href="<?php echo e($pub_url); ?>/css/font-awesome-ie7.css" rel="stylesheet" type="text/css"/> 
+ 
+<link href="<?php echo e($pub_url); ?>/css/jquery.booklet.latest.css" type="text/css" rel="stylesheet" media="screen, projection, tv"/>
+<noscript>
+<link rel="stylesheet" type="text/css" href="<?php echo e($pub_url); ?>/css/nojs.css"/>
+</noscript>
+ 
+
+<link rel="stylesheet" href="<?php echo e(asset('/global/css/frontend.css')); ?>"/> 
+<link href="<?php echo e($pub_url); ?>/css/switcher.css" rel="stylesheet" type="text/css"/>
+ 
+<link rel="stylesheet" name="skins" href="<?php echo e($pub_url); ?>/css/default.css" type="text/css" media="all">
+ 
+ 
+</head>
+<body>
+ 
+<div class="wrapper">
+ 
+ 
+<section class="top-nav-bar">
+<section class="container-fluid container">
+<section class="row-fluid">
+<section class="span6">
+<ul class="top-nav">
+<li><a href="index-2.html" class="active">Home page</a></li>
+<li><a href="grid-view.html">Online Store</a></li>
+<li><a href="blog.html">Blog</a></li>
+<li><a href="shortcodes.html">Short Codes</a></li>
+<li><a href="blog-detail.html">News</a></li>
+<li><a href="contact.html">Contact Us</a></li>
+</ul>
+</section>
+<section class="span6 e-commerce-list">
+<ul>
+<li>Welcome! <a href="checkout.html">Login</a> or <a href="checkout.html">Create an account</a></li>
+<li class="p-category"><a href="#">$</a> <a href="#">£</a> <a href="#">€</a></li>
+<li class="p-category"><a href="#">eng</a> <a href="#">de</a> <a href="#">fr</a></li>
+</ul>
+<div class="c-btn"> <a href="cart.html" class="cart-btn">Cart</a>
+<div class="btn-group">
+<button data-toggle="dropdown" class="btn btn-mini dropdown-toggle">0 item(s) - $0.00<span class="caret"></span></button>
+<ul class="dropdown-menu">
+<li><a href="#">Action</a></li>
+<li><a href="#">Another action</a></li>
+<li><a href="#">Something else here</a></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+ 
+<header id="main-header">
+<section class="container-fluid container">
+<section class="row-fluid">
+<section class="span4">
+<h1 id="logo"> <a href="index-2.html"><img src="<?php echo e($pub_url); ?>/png/logo.png"/></a> </h1>
+</section>
+<section class="span8">
+<ul class="top-nav2">
+<li><a href="checkout.html">My Account</a></li>
+<li><a href="cart.html">My Cart</a></li>
+<li><a href="checkout.html">Checkout</a></li>
+<li><a href="order-recieved.html">Track Your Order</a></li>
+</ul>
+<div class="search-bar">
+<input name="" type="text" value="search entire store here..."/>
+<input name="" type="button" value="Serach"/>
+</div>
+</section>
+</section>
+</section>
+ 
+<nav id="nav">
+<div class="navbar navbar-inverse">
+<div class="navbar-inner">
+<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+<div class="nav-collapse collapse">
+<ul class="nav">
+<?php foreach($categories['parent_id'][0] as $c): ?>
+	<?php if( isset($categories['parent_id'][$c]) ): ?>
+		<li class="dropdown"> <a class="dropdown-toggle" href="<?php echo e(url('book/'.$categories['id_url'][$c])); ?>" data-toggle="dropdown"><?php echo e(strtoupper($categories['id_name'][$c])); ?><b class="caret"></b> </a>
+		<ul class="dropdown-menu">
+		<?php foreach($categories['parent_id'][$c] as $c): ?>
+		<li> <a href="<?php echo e(url('book/'.$categories['id_url'][$c])); ?>"><?php echo e(ucwords($categories['id_name'][$c])); ?></a> </li>
+		<?php endforeach; ?>
+		</ul>
+	<?php else: ?>
+	<li> <a href="<?php echo e(url('book/'.$categories['id_url'][$c])); ?>"><?php echo e(strtoupper($categories['id_name'][$c])); ?></a> </li>
+	<?php endif; ?>
+<?php endforeach; ?>
+</ul>
+</div>
+ 
+</div>
+ 
+</div>
+ 
+</nav>
+ 
+</header>
+ 
+ 
+<?php echo $__env->yieldContent('content'); ?>
+ 
+<section class="container-fluid footer-top2">
+<section class="social-ico-bar">
+<section class="container">
+<section class="row-fluid">
+<div id="socialicons" class="hidden-phone"> <a id="social_linkedin" class="social_active" href="#" title="Visit Google Plus page"><span></span></a> <a id="social_facebook" class="social_active" href="#" title="Visit Facebook page"><span></span></a> <a id="social_twitter" class="social_active" href="#" title="Visit Twitter page"><span></span></a> <a id="social_youtube" class="social_active" href="#" title="Visit Youtube"><span></span></a> <a id="social_vimeo" class="social_active" href="#" title="Visit Vimeo"><span></span></a> <a id="social_trumblr" class="social_active" href="#" title="Visit Vimeo"><span></span></a> <a id="social_google_plus" class="social_active" href="#" title="Visit Vimeo"><span></span></a> <a id="social_dribbble" class="social_active" href="#" title="Visit Vimeo"><span></span></a> <a id="social_pinterest" class="social_active" href="#" title="Visit Vimeo"><span></span></a> </div>
+<ul class="footer2-link">
+<li><a href="about-us.html">About Us</a></li>
+<li><a href="contact.html">Customer Service</a></li>
+<li><a href="order-recieved.html">Orders Tracking</a></li>
+</ul>
+</section>
+</section>
+</section>
+<section class="container">
+<section class="row-fluid">
+<figure class="span4">
+<h4>BestSellers</h4>
+<ul class="f2-img-list">
+<li>
+<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image19.jpg"/></a></div>
+<div class="right"> <strong class="title"><a href="book-detail.html">fields</a></strong> <span class="by-author">by Arnold Grey</span> <span class="f-price">$127.55</span> </div>
+</li>
+<li>
+<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image31.jpg"/></a></div>
+<div class="right"> <strong class="title"><a href="book-detail.html">Garfield</a></strong> <span class="by-author">by Arnold Grey</span> <span class="f-price">$127.55</span> </div>
+</li>
+<li>
+<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image32.jpg"/></a></div>
+<div class="right"> <strong class="title"><a href="book-detail.html">Penselviniya</a></strong> <span class="by-author">by Arnold Grey</span> <span class="f-price">$127.55</span> </div>
+</li>
+<li>
+<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image33.jpg"/></a></div>
+<div class="right"> <strong class="title"><a href="book-detail.html">Exemption</a></strong> <span class="by-author">by Arnold Grey</span> <span class="f-price">$127.55</span> </div>
+</li>
+<li>
+<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image34.jpg"/></a></div>
+<div class="right"> <strong class="title"><a href="book-detail.html">Penfield</a></strong> <span class="by-author">by Arnold Grey</span> <span class="f-price">$127.55</span> </div>
+</li>
+<li>
+<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image32.jpg"/></a></div>
+<div class="right"> <strong class="title"><a href="book-detail.html">Doors</a></strong> <span class="by-author">by Arnold Grey</span> <span class="f-price">$127.55</span> </div>
+</li>
+</ul>
+</figure>
+<figure class="span4">
+<h4>Top Rated Books</h4>
+<ul class="f2-img-list">
+<li>
+<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image35.jpg" alt=""/></a></div>
+<div class="right"> <strong class="title"><a href="book-detail.html">A little rain</a></strong> <span class="by-author">by Arnold Grey</span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span> </div>
+</li>
+<li>
+<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image33.jpg" alt=""/></a></div>
+<div class="right"> <strong class="title"><a href="book-detail.html">Son of Arabia</a></strong> <span class="by-author">by Arnold Grey</span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span> </div>
+</li>
+<li>
+<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image32.jpg" alt=""/></a></div>
+<div class="right"> <strong class="title"><a href="book-detail.html">Serpents</a></strong> <span class="by-author">by Arnold Grey</span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span> </div>
+</li>
+<li>
+<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image34.jpg" alt=""/></a></div>
+<div class="right"> <strong class="title"><a href="book-detail.html">Guns</a></strong> <span class="by-author">by Arnold Grey</span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span> </div>
+</li>
+<li>
+<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image19.jpg" alt=""/></a></div>
+<div class="right"> <strong class="title"><a href="book-detail.html">Garfield</a></strong> <span class="by-author">by Arnold Grey</span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span> </div>
+</li>
+<li>
+<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image35.jpg" alt=""/></a></div>
+<div class="right"> <strong class="title"><a href="book-detail.html">Wolfman</a></strong> <span class="by-author">by Arnold Grey</span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span> </div>
+</li>
+</ul>
+</figure>
+<figure class="span4">
+<h4>From the blog</h4>
+<ul class="f2-pots-list">
+<li> <span class="post-date2">28 APR</span> <a href="blog-detail.html">Corso completo di grafica web completo di grafi dare...</a> <span class="comments-num">6 comments</span> </li>
+<li> <span class="post-date2">28 APR</span> <a href="blog-detail.html">Corso completo di grafica web completo di grafi dare...</a> <span class="comments-num">6 comments</span> </li>
+<li> <span class="post-date2">28 APR</span> <a href="blog-detail.html">Corso completo di grafica web completo di grafi dare...</a> <span class="comments-num">6 comments</span> </li>
+</ul>
+</figure>
+</section>
+</section>
+</section>
+ 
+ 
+<footer id="main-footer">
+<section class="social-ico-bar">
+<section class="container">
+<section class="row-fluid">
+<article class="span6">
+<p>© 2013 BookShoppe’ - Premium WooCommerce Theme. </p>
+</article>
+<article class="span6 copy-right">
+<p>Designed by <a href="http://www.crunchpress.com/">Crunchpress.com</a></p>
+</article>
+</section>
+</section>
+</section>
+</footer>
+ 
+</div>
+ 
+ 
+<script type="text/javascript" src="<?php echo e($pub_url); ?>/js/lib.js"></script> 
+<script type="text/javascript" src="<?php echo e($pub_url); ?>/js/modernizr.js"></script> 
+<script type="text/javascript" src="<?php echo e($pub_url); ?>/js/easing.js"></script> 
+<script type="text/javascript" src="<?php echo e($pub_url); ?>/js/bs.js"></script> 
+<script type="text/javascript" src="<?php echo e($pub_url); ?>/js/bxslider.js"></script> 
+<script type="text/javascript" src="<?php echo e($pub_url); ?>/js/input-clear.js"></script> 
+<script src="<?php echo e($pub_url); ?>/js/range-slider.js"></script> 
+<script src="<?php echo e($pub_url); ?>/js/jquery.zoom.js"></script> 
+<script type="text/javascript" src="<?php echo e($pub_url); ?>/js/bookblock.js"></script> 
+<script type="text/javascript" src="<?php echo e($pub_url); ?>/js/social.js"></script> 
+<script src="<?php echo e($pub_url); ?>/js/jquery.booklet.latest.js" type="text/javascript"></script> 
+<script type="text/javascript">
+	    $(function () {		
+	        $("#mybook").booklet({
+				width:'100%',
+				height:430,
+				auto: true,
+				//speed: 250,
+			});
+	    });
     </script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="<?php echo e($pub_url); ?>/bootstrap/js/bootstrap.min.js"></script>
-    <!-- Morris.js charts -->
-    <script src="<?php echo e(asset('/global/js/raphael-min.js')); ?>"></script>
-    <!-- Sparkline -->
-    <script src="<?php echo e($pub_url); ?>/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <!-- jvectormap -->
-    <script src="<?php echo e($pub_url); ?>/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="<?php echo e($pub_url); ?>/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="<?php echo e($pub_url); ?>/plugins/knob/jquery.knob.js"></script>
-    <!-- daterangepicker -->
-    <script src="<?php echo e(asset('/global/js/moment.min.js')); ?>"></script>
-    <script src="<?php echo e($pub_url); ?>/plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- datepicker -->
-    <script src="<?php echo e($pub_url); ?>/plugins/datepicker/bootstrap-datepicker.js"></script>
-    <!-- Bootstrap WYSIHTML5 -->
-    <script src="<?php echo e($pub_url); ?>/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-    <!-- Slimscroll -->
-    <script src="<?php echo e($pub_url); ?>/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="<?php echo e($pub_url); ?>/plugins/fastclick/fastclick.min.js"></script>
-    <!-- Select2 -->
-    <script src="<?php echo e($pub_url); ?>/plugins/select2/select2.full.min.js"></script>
-    <!-- Notif -->
-    <script src="<?php echo e(asset('/global/js/jquery.bootstrap-growl.min.js')); ?>"></script>
-    <!-- AdminLTE App -->
-    <script src="<?php echo e($pub_url); ?>/dist/js/app.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="<?php echo e($pub_url); ?>/dist/js/demo.js"></script>
-    <!-- Datatable -->
-    <script src="<?php echo e(asset('/global/js/jquery.dataTables.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('/global/js/datatables.bootstrap.js')); ?>"></script>
-    <script src="<?php echo e(asset('/global/js/dataTables.fixedColumns.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('/global/js/jquery.tokeninput.js')); ?>"></script>
-    <!-- Main -->
-    <script src="<?php echo e(asset('/global/js/jquery.datetimepicker.full.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('/global/js/number.js')); ?>"></script>
-    <script src="<?php echo e(asset('/global/js/main.js')); ?>"></script>
-    <!-- iCheck -->
-    <script src="<?php echo e($pub_url); ?>/plugins/iCheck/icheck.min.js"></script>
-    
-    <!-- CUSTOM JS -->
-    <script>
-        <?= packerJs("
-        $(function() {    
-            if ( $('#list-table').length>0 )
-            {
-                var objTbl = $('#list-table');
-                var objCol= [];
-                objTbl.find('thead th').each(function(i, v){
-                    objCol.push({ 
-                        'data': $(v).data('column'), 
-                        'orderable': $(v).data('sort') ? true : false, 
-                        'searchable': $(v).data('search') ? true : false, 
-                    });
-                });
+ 
+<noscript>
+<style>#socialicons>a span{top:0px;left:-100%;-webkit-transition:all 0.3s ease;-moz-transition:all 0.3s ease-in-out;-o-transition:all 0.3s ease-in-out;-ms-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;}#socialicons>ahover div{left:0px;}</style>
+</noscript>
+<script type="text/javascript">
+  /* <![CDATA[ */
+  $(document).ready(function() {
+  $('.social_active').hoverdir( {} );
+})
+/* ]]> */
+</script>
+  <div class="switcher"></div>  
+ 
+<script type="text/javascript" src="<?php echo e($pub_url); ?>/js/cookie.js"></script>
+<script type="text/javascript" src="<?php echo e($pub_url); ?>/js/colorswitcher.js"></script>
+ 
+<script type="text/javascript" src="<?php echo e($pub_url); ?>/js/custom.js"></script> 
+</body>
 
-                var oTable = objTbl.DataTable({
-                    processing: true,
-                    serverSide: true,
-                    ajax: {
-                        url: objTbl.data('url'),
-                        method: 'POST',
-                        data: {
-                            '_token': objTbl.data('token'),
-                        }
-                    },
-                    columns: objCol,
-                    'language': {
-                        'lengthMenu': '".trans('global.table_menu')."',
-                        'zeroRecords': '".trans('global.table_nothing')."',
-                        'info': '".trans('global.table_info')."',
-                        'infoEmpty': '".trans('global.table_empty')."',
-                        'infoFiltered': '".trans('global.table_filter')."',
-                        'search': '".trans('global.table_search')."'
-                    },
-                });
-                
-                //SUBMIT
-                $(document).on('submit', '#formData', function(){
-                    
-                    var form = $(this);
-                    
-                    $.ajax({
-                		type		: 'POST',
-                		url			: form.attr('action'),
-                        data        : form.serialize(),
-                		beforeSend	: function(xhr) { loading(1) },
-                		success		: function(dt){
-                          
-                          if ( dt.status ) oTable.ajax.reload();
-                          
-                          if ( dt.form ) form.closest('.box').replaceWith(atob(dt.form));
-                          
-                	      if ( dt.message ) initNotif(atob(dt.message));
-
-                	      if ( dt.rdr ) window.location.href = dt.rdr;
-            
-                    	},
-                	}).done(function(){ loading(0) }); 
-                    
-                    return false;
-                });
-                
-                //EDIT & RESET & DELETE
-                $(document).on('click', '.btn-edit, .btn-reset, .btn-delete', function(){
-                    
-                    var ButtonElm = $(this);
-                    var isDelete = ButtonElm.hasClass('btn-delete');
-                    var url = ButtonElm.attr('href');
-                    var modal = ButtonElm.closest('.modalConfirmation');
-
-                    if ( $('#formData').length==0 && !isDelete) 
-                    {
-                        window.location.href = url; 
-
-                        return false;
-                    }
-            
-                    $.ajax({
-                		type		: 'GET',
-                		url			: url,
-                		beforeSend	: function(xhr) { if ( isDelete ) { modal.find('.delete-loding').show(); } else { loading(1); } },
-                		success		: function(dt){
-                		  if ( isDelete )
-                          {
-                              oTable.ajax.reload();
-                              //close modal
-                              modal.find('.close').click();  
-                              //reset
-                              $('.btn-reset').click();
-
-                              if ( dt.message ) initNotif(atob(dt.message));
-                          }
-                          else
-                          {
-                		      $('#formData').closest('.box').replaceWith(dt);
-                          } 
-                        },
-                	}).done(function(){ if ( isDelete ) { modal.find('.delete-loding').hide(); } else { loading(0); } });
-                    
-                    return false;
-                });    
-            }
-            
-            select2();
-            $('input:not(.excheck)').iCheck({
-              checkboxClass: 'icheckbox_square-green',
-              radioClass: 'iradio_square-green',
-              increaseArea: '20%' // optional
-            });
-            $('[name=username]').focus();
-            
-            $(document).on('submit', 'form', function(){
-                $('#main-loding').show()
-            });
-                
-            function select2()
-            {
-                $('.select2').select2();
-            }    
-        });")?>
-    </script>
-    <!-- EOF CUSTOM JS -->
-    
-    <?php echo $__env->yieldPushContent('scripts'); ?>
-  </body>
+<!-- Mirrored from html.crunchpress.com/book-store/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 22 Mar 2017 05:23:03 GMT -->
 </html>

@@ -167,6 +167,7 @@
                 var oTable = objTbl.DataTable({
                     processing: true,
                     serverSide: true,
+                    order : [[0, 'desc']],
                     ajax: {
                         url: objTbl.data('url'),
                         method: 'POST',

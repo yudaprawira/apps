@@ -85,9 +85,10 @@ class Controller extends BaseController
     |@param : $mainDir String name parent directories ex:book
     |@param : $size Array ex:['600x800', '200x300']
     |@param : $urlName String ex:abc 
+    |@param : $aspectRatio Boolean ex:true 
     |@return : abc-600x800.jpg 
     */
-    public function _uploadImage($img, $mainDir, $size, $urlName='')
+    public function _uploadImage($img, $mainDir, $size, $urlName='', $aspectRatio=true)
     {
         $ret = array();
 
@@ -110,8 +111,8 @@ class Controller extends BaseController
 
                     $realPath = public_path($path . $filename);
 
-                    if ($r = Image::make($img->getRealPath())->resize($arrSize[0], $arrSize[1], function ($constraint) {
-                        $constraint->aspectRatio();
+                    if ($r = Image::make($img->getRealPath())->resize($arrSize[0], $arrSize[1], function ($constraint) use($aspectRatio) {
+                        if ($aspectRatio) $constraint->aspectRatio();
                     })->save($realPath))
                     {
                         $ret[$s] = $path.$r->basename;
