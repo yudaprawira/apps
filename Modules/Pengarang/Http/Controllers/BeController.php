@@ -76,7 +76,7 @@ class BeController extends BaseController
     function save()
     {
         $input  = Input::except('_token');
-        $image  = $input['file'];
+        $image  = isset($input['file']) && $input['file'] ? $input['file'] : null;unset($input['file']);
         parse_str($input['post'], $params);
         $input  = $params;
         unset($input['_image']);

@@ -1,0 +1,25 @@
+{
+    "name": "Akun Bank",
+    "alias": "akun-bank",
+    "description": "Mengelola Akun Bank",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\AkunBank\\Providers\\SP"
+    ],
+    "aliases": [],
+    "files": [
+        "start.php"
+    ],
+    "requires": [],
+    "author": {
+        "name": "Yuda Prawira",
+        "site": "http:\/\/yuda.tk"
+    },
+    "info": {
+        "version": 1,
+        "date": "2017-03-27 14:41:22",
+        "changelog": ""
+    }
+}

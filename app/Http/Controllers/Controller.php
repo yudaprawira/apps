@@ -92,7 +92,7 @@ class Controller extends BaseController
     {
         $ret = array();
 
-        if ( $img && !empty($size) )
+        if ( $img && $img!='undefined' && !empty($size) )
         {
             $path = $mainDir."/".date("Y/m/d/");
 
@@ -123,6 +123,27 @@ class Controller extends BaseController
         
         return $ret;
     }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Validate with error
+    |--------------------------------------------------------------------------
+    */
+    public function setValidator($error, $type='warning', $align='right')
+    {
+        if ( $error )
+        {
+            foreach( $error->toArray() as $name=>$arrayError )
+            {
+                foreach($arrayError as $e)
+                {
+                    $this->setNotif($e, $type, $align, 'auto', false, $name);
+                }
+            }
+        }
+    }
+    
+    
 
     /*
     |--------------------------------------------------------------------------

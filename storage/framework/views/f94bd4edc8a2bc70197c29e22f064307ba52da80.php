@@ -33,8 +33,8 @@
 <link href="<?php echo e($pub_url); ?>/css/switcher.css" rel="stylesheet" type="text/css"/>
  
 <link rel="stylesheet" name="skins" href="<?php echo e($pub_url); ?>/css/default.css" type="text/css" media="all">
- 
- 
+<?php echo $__env->yieldPushContent('styles'); ?>
+
 </head>
 <body>
  
@@ -60,13 +60,13 @@
 <li class="p-category"><a href="#">$</a> <a href="#">£</a> <a href="#">€</a></li>
 <li class="p-category"><a href="#">eng</a> <a href="#">de</a> <a href="#">fr</a></li>
 </ul>
-<div class="c-btn"> <a href="cart.html" class="cart-btn">Cart</a>
+<div class="c-btn"> <a href="<?php echo e(url('keranjang')); ?>" class="cart-btn">Keranjang</a>
 <div class="btn-group">
-<button data-toggle="dropdown" class="btn btn-mini dropdown-toggle">0 item(s) - $0.00<span class="caret"></span></button>
+<button data-toggle="dropdown" class="btn btn-mini dropdown-toggle" id="json-cart">0 buku - Rp 0<span class="caret"></span></button>
 <ul class="dropdown-menu">
-<li><a href="#">Action</a></li>
-<li><a href="#">Another action</a></li>
-<li><a href="#">Something else here</a></li>
+<li><a href="<?php echo e(url('keranjang')); ?>">Keranjang</a></li>
+<li><a href="<?php echo e(url('keranjang/clear')); ?>">Bersihkan</a></li>
+<li><a href="<?php echo e(url('keranjang/proses')); ?>">Pembayaran</a></li>
 </ul>
 </div>
 </div>
@@ -125,7 +125,7 @@
  
 </header>
  
- 
+<?php echo $notif; ?> 
 <?php echo $__env->yieldContent('content'); ?>
  
 <section class="container-fluid footer-top2">
@@ -143,72 +143,39 @@
 </section>
 <section class="container">
 <section class="row-fluid">
-<figure class="span4">
-<h4>BestSellers</h4>
-<ul class="f2-img-list">
-<li>
-<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image19.jpg"/></a></div>
-<div class="right"> <strong class="title"><a href="book-detail.html">fields</a></strong> <span class="by-author">by Arnold Grey</span> <span class="f-price">$127.55</span> </div>
-</li>
-<li>
-<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image31.jpg"/></a></div>
-<div class="right"> <strong class="title"><a href="book-detail.html">Garfield</a></strong> <span class="by-author">by Arnold Grey</span> <span class="f-price">$127.55</span> </div>
-</li>
-<li>
-<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image32.jpg"/></a></div>
-<div class="right"> <strong class="title"><a href="book-detail.html">Penselviniya</a></strong> <span class="by-author">by Arnold Grey</span> <span class="f-price">$127.55</span> </div>
-</li>
-<li>
-<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image33.jpg"/></a></div>
-<div class="right"> <strong class="title"><a href="book-detail.html">Exemption</a></strong> <span class="by-author">by Arnold Grey</span> <span class="f-price">$127.55</span> </div>
-</li>
-<li>
-<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image34.jpg"/></a></div>
-<div class="right"> <strong class="title"><a href="book-detail.html">Penfield</a></strong> <span class="by-author">by Arnold Grey</span> <span class="f-price">$127.55</span> </div>
-</li>
-<li>
-<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image32.jpg"/></a></div>
-<div class="right"> <strong class="title"><a href="book-detail.html">Doors</a></strong> <span class="by-author">by Arnold Grey</span> <span class="f-price">$127.55</span> </div>
-</li>
-</ul>
-</figure>
-<figure class="span4">
-<h4>Top Rated Books</h4>
-<ul class="f2-img-list">
-<li>
-<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image35.jpg" alt=""/></a></div>
-<div class="right"> <strong class="title"><a href="book-detail.html">A little rain</a></strong> <span class="by-author">by Arnold Grey</span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span> </div>
-</li>
-<li>
-<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image33.jpg" alt=""/></a></div>
-<div class="right"> <strong class="title"><a href="book-detail.html">Son of Arabia</a></strong> <span class="by-author">by Arnold Grey</span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span> </div>
-</li>
-<li>
-<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image32.jpg" alt=""/></a></div>
-<div class="right"> <strong class="title"><a href="book-detail.html">Serpents</a></strong> <span class="by-author">by Arnold Grey</span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span> </div>
-</li>
-<li>
-<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image34.jpg" alt=""/></a></div>
-<div class="right"> <strong class="title"><a href="book-detail.html">Guns</a></strong> <span class="by-author">by Arnold Grey</span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span> </div>
-</li>
-<li>
-<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image19.jpg" alt=""/></a></div>
-<div class="right"> <strong class="title"><a href="book-detail.html">Garfield</a></strong> <span class="by-author">by Arnold Grey</span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span> </div>
-</li>
-<li>
-<div class="left"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image35.jpg" alt=""/></a></div>
-<div class="right"> <strong class="title"><a href="book-detail.html">Wolfman</a></strong> <span class="by-author">by Arnold Grey</span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span> </div>
-</li>
-</ul>
-</figure>
-<figure class="span4">
-<h4>From the blog</h4>
-<ul class="f2-pots-list">
-<li> <span class="post-date2">28 APR</span> <a href="blog-detail.html">Corso completo di grafica web completo di grafi dare...</a> <span class="comments-num">6 comments</span> </li>
-<li> <span class="post-date2">28 APR</span> <a href="blog-detail.html">Corso completo di grafica web completo di grafi dare...</a> <span class="comments-num">6 comments</span> </li>
-<li> <span class="post-date2">28 APR</span> <a href="blog-detail.html">Corso completo di grafica web completo di grafi dare...</a> <span class="comments-num">6 comments</span> </li>
-</ul>
-</figure>
+	<figure class="span4">
+		<h4>BestSellers</h4>
+		<ul class="f2-img-list">
+			<?php foreach( $footer_data['best_seller'] as $v ): ?>
+			<li>
+			<div class="left"><a href="<?php echo e(getBookUrl($v)['detail']); ?>"><img src="<?php echo e(getBookImage(val($v, 'image'))['small']); ?>"/></a></div>
+			<div class="right"> <strong class="title"><a href="<?php echo e(getBookUrl($v)['detail']); ?>"><?php echo e(ucwords(val($v, 'title'))); ?></a></strong> <span class="by-author">by <?php echo e(val($v, 'rel_pengaran.pengarang')); ?></span> <span class="f-price"><?php echo getPrice($v); ?></span> </div>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</figure>
+	<figure class="span4">
+		<h4>Top Rated Books</h4>
+		<ul class="f2-img-list">
+			<?php foreach( $footer_data['top_rated'] as $v ): ?>
+			<li>
+			<div class="left"><a href="<?php echo e(getBookUrl($v)['detail']); ?>"><img src="<?php echo e(getBookImage(val($v, 'image'))['small']); ?>"/></a></div>
+			<div class="right"> <strong class="title"><a href="<?php echo e(getBookUrl($v)['detail']); ?>"><?php echo e(ucwords(val($v, 'title'))); ?></a></strong> <span class="by-author">by <?php echo e(val($v, 'rel_pengaran.pengarang')); ?></span> <span class="f-price"><?php echo getPrice($v); ?></span> </div>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</figure>
+	<figure class="span4">
+		<h4>Top Rated Books</h4>
+		<ul class="f2-img-list">
+			<?php foreach( $footer_data['top_rated'] as $v ): ?>
+			<li>
+			<div class="left"><a href="<?php echo e(getBookUrl($v)['detail']); ?>"><img src="<?php echo e(getBookImage(val($v, 'image'))['small']); ?>"/></a></div>
+			<div class="right"> <strong class="title"><a href="<?php echo e(getBookUrl($v)['detail']); ?>"><?php echo e(ucwords(val($v, 'title'))); ?></a></strong> <span class="by-author">by <?php echo e(val($v, 'rel_pengaran.pengarang')); ?></span> <span class="f-price"><?php echo getPrice($v); ?></span> </div>
+			</li>
+			<?php endforeach; ?>
+		</ul>
+	</figure>
 </section>
 </section>
 </section>
@@ -230,7 +197,7 @@
 </footer>
  
 </div>
- 
+<div id="main-loding"><div class="indicator">Sedang Proses...</div></div>
  
 <script type="text/javascript" src="<?php echo e($pub_url); ?>/js/lib.js"></script> 
 <script type="text/javascript" src="<?php echo e($pub_url); ?>/js/modernizr.js"></script> 
@@ -251,7 +218,30 @@
 				auto: true,
 				//speed: 250,
 			});
+			
 	    });
+		$(window).load(function(){
+			//auto height figure
+			$('.figure-parent').each(function(){
+				var h = $(this).find('.figure-item').first().outerHeight();
+				$(this).find('.figure-item').each(function(){
+					h = h > $(this).outerHeight() ? h : $(this).outerHeight();
+				});
+				$(this).find('.figure-item').css({'height' : h+'px', 'position': 'relative'});
+				$(this).find('.figure-item .cart-price').css({'bottom' : '15px', 'position': 'absolute'});
+			});
+		});
+		$(document).ready(function(){
+			getCart()
+			setInterval(getCart(), 1000*60);
+			function getCart()
+			{
+				$.getJSON('<?php echo e(url('keranjang/api')); ?>', function(json){
+					$('#json-cart').html(json.total.qty_format + ' buku - '+json.total.harga_format);
+					
+				});
+			}
+		});
     </script>
  
 <noscript>
@@ -264,13 +254,15 @@
 })
 /* ]]> */
 </script>
-  <div class="switcher"></div>  
- 
+  <?php echo $__env->yieldPushContent('scripts'); ?>
+
+<!-- Notif -->
+<script src="<?php echo e(asset('/global/js/jquery.bootstrap-growl.min.js')); ?>"></script>
+<script src="<?php echo e(asset('/global/js/number.js')); ?>"></script>
+<script src="<?php echo e(asset('/global/js/main.js')); ?>"></script>
+
 <script type="text/javascript" src="<?php echo e($pub_url); ?>/js/cookie.js"></script>
 <script type="text/javascript" src="<?php echo e($pub_url); ?>/js/colorswitcher.js"></script>
- 
 <script type="text/javascript" src="<?php echo e($pub_url); ?>/js/custom.js"></script> 
 </body>
-
-<!-- Mirrored from html.crunchpress.com/book-store/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 22 Mar 2017 05:23:03 GMT -->
 </html>

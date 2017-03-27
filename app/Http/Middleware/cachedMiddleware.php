@@ -35,8 +35,9 @@ class cachedMiddleware
     protected function getResponse(Closure $next) 
     {
         $cacheKey = trim($this->request->getPathInfo(), '/');
-        
-        if(!\Cache::has($cacheKey)) {
+        ;
+        if(!\Cache::has($cacheKey)) 
+        {
             $response = $next($this->request);
 
             $response->original = '';

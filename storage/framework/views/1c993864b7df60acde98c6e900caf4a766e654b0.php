@@ -11,7 +11,7 @@
                     <?php foreach( $headline as $h): ?>
                     <div title="first page">
                         <div class="left-page">
-                            <div class="frame"><img src="<?php echo e($h->image); ?>" alt="img"></div>
+                            <div class="frame"><img src="<?php echo e(getBookImage(val($h, 'image'))['big']); ?>" alt="img"></div>
                             <div class="bottom">
                                 <div class="cart-price"> <span class="cart">&nbsp;</span> <strong class="price"><?php echo getPrice($h); ?></strong> </div>
                             </div>
@@ -20,16 +20,16 @@
                     <div title="second page">
                         <div class="right-page">
                             <div class="text">
-                                <h1><?php echo e(ucwords($h->title)); ?></h1>
-                                <strong class="name">by <?php echo e($h->relPengarang->pengarang); ?></strong>
+                                <h1><?php echo e(ucwords(val($h, 'title'))); ?></h1>
+                                <strong class="name">by <?php echo e(val($h, 'rel_pengaran.pengarang')); ?></strong>
                                 <div class="rating-box"><img src="<?php echo e($pub_url); ?>/png/rating-img.png" alt="img"></div>
-                                <a href="<?php echo e(url('keranjang/'.$h->url.'.html')); ?>" class="btn-shop">SHOP NOW</a> 
+                                <a href="<?php echo e(getBookUrl($h)['cart']); ?>" class="btn-shop">SHOP NOW</a> 
                             </div>
                             <div class="bottom">
                                 <div class="text">
                                     <div class="inner">
-                                        <p><?php echo e(substr(strip_tags($h->deskripsi),0, 150)); ?></p>
-                                        <a href="<?php echo e(url('book/'.$h->url.'.html')); ?>" class="readmore">Read More</a> </div>
+                                        <p><?php echo e(substr(strip_tags(val($h,'deskripsi')),0, 150)); ?></p>
+                                        <a href="<?php echo e(getBookUrl($h)['detail']); ?>" class="readmore">Read More</a> </div>
                                         <div class="batch-icon"><img src="<?php echo e($pub_url); ?>/png/batch-img.png" alt="img"></div>
                                 </div>
                             </div>
@@ -51,68 +51,48 @@
     <section class="row-fluid ">
         <?php foreach( $terjual as $h ): ?>
         <figure class="span4 s-product">
-            <div class="s-product-img"><a href="<?php echo e(url('book/'.$h->url.'.html')); ?>"><img src="<?php echo e($h->image); ?>" alt="<?php echo e(ucwords($h->title)); ?>"/></a></div>
+            <div class="s-product-img"><a href="<?php echo e(getBookUrl($h)['detail']); ?>"><img src="<?php echo e(getBookImage(val($h, 'image'))['medium']); ?>" alt="<?php echo e(ucwords(val($h, 'title'))); ?>"/></a></div>
             <article class="s-product-det">
-            <h3><a href="<?php echo e(url('book/'.$h->url.'.html')); ?>"><?php echo e(ucwords($h->title)); ?></a></h3>
-            <p><?php echo e(substr(strip_tags($h->deskripsi),0, 100)); ?></p>
+            <h3><a href="<?php echo e(getBookUrl($h)['detail']); ?>"><?php echo e(ucwords(val($h, 'title'))); ?></a></h3>
+            <p><?php echo e(substr(strip_tags(val($h, 'deskripsi')),0, 100)); ?></p>
             <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-            <div class="cart-price"> <a href="<?php echo e(url('keranjang/'.$h->url.'.html')); ?>" class="cart-btn2">Add to Cart</a> <span class="price"><?php echo getPrice($h); ?></span> </div>
+            <div class="cart-price"> <a href="<?php echo e(getBookUrl($h)['cart']); ?>" class="cart-btn2">Add to Cart</a> <span class="price"><?php echo getPrice($h); ?></span> </div>
             <span class="sale-icon">Sale</span> </article>
         </figure>
         <?php endforeach; ?>
     </section>
     
-    <section class="row-fluid features-books">
-        <section class="span12 m-bottom">
-        <div class="heading-bar">
-        <h2>Featured Books</h2>
-        <span class="h-line"></span> </div>
-        <div class="slider1">
-        <div class="slide"> <a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image05.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        <div class="slide"> <a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image06.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        <div class="slide"> <a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image07.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        <div class="slide"> <a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image08.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        <div class="slide"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image09.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        <div class="slide"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image10.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        <div class="slide"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image06.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        <div class="slide"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image07.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        <div class="slide"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image08.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        <div class="slide"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image09.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        <div class="slide"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image10.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        <div class="slide"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image06.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        <div class="slide"><a href="book-detail.html"><img src="<?php echo e($pub_url); ?>/jpg/image05.jpg" alt="" class="pro-img"/></a> <span class="title"><a href="book-detail.html">A Walk Across The Sun</a></span> <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
-        <div class="cart-price"> <a class="cart-btn2" href="cart.html">Add to Cart</a> <span class="price">$129.90</span> </div>
-        </div>
-        </div>
+    <?php foreach( $products as $parentID=>$producValue ): ?>
+    <section id="content-holder" class="container-fluid container">
+        <section class="row-fluid">
+            
+            <div class="heading-bar">
+                <h2><a href="<?php echo e(url('book/'.val($categories, 'id_url.'.$parentID))); ?>"><?php echo e(ucwords(strtolower(val($categories, 'id_name.'.$parentID)))); ?></a></h2>
+                <span class="h-line"></span>
+            </div>
+            
+            <section class="span12 first">
+                <section class="grid-holder features-books figure-parent">
+                    <?php foreach($producValue as $k=>$v): ?>
+                    <figure class="span3 slide <?php echo e($k%4==0?'first':''); ?> figure-item">
+                        <a href="<?php echo e(getBookUrl($v)['detail']); ?>"><img src="<?php echo e(getBookImage(val($v, 'image'))['medium']); ?>" alt="<?php echo e(ucwords(val($v, 'title'))); ?>" class="pro-img"/></a>
+                        <span class="title"><a href="<?php echo e(getBookUrl($v)['detail']); ?>"><?php echo e(ucwords(val($v, 'title'))); ?></a></span>
+                        <span class="rating-bar"><img src="<?php echo e($pub_url); ?>/png/rating-star.png" alt="Rating Star"/></span>
+                        <div class="cart-price">
+                        <a class="cart-btn2" href="<?php echo e(getBookUrl($v)['cart']); ?>">Add to Cart</a>
+                        <span class="price"><?php echo getPrice($v); ?></span>
+                        </div>
+                    </figure>
+                    <?php endforeach; ?>
+                </section>
+            </section>
+        
         </section>
     </section>
+    <?php endforeach; ?>
     
     
-    <section class="row-fluid m-bottom">
+    <!--section class="row-fluid m-bottom">
         <section class="span9">
         <div class="featured-author">
         <div class="left"> <span class="author-img-holder"><a href="about-us.html"><img src="<?php echo e($pub_url); ?>/jpg/image16.jpg" alt=""/></a></span>
@@ -223,7 +203,7 @@
         </div>
         </section>
     
-    </section>
+    </section-->
 </section> 
 <?php $__env->stopSection(); ?>
 

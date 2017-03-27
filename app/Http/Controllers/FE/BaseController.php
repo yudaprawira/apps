@@ -37,10 +37,23 @@ class BaseController extends Controller
             'notif'  => $this->_buildNotification(),
             'pub_url'=> url(str_replace('.', '/', config('app.template'))),
             'categories'  => categoryArray(),
+            'footer_data' => $this->_footerData(),
         ];
         
     }
     
+    /*
+    |--------------------------------------------------------------------------
+    | FOOTER DATA
+    |--------------------------------------------------------------------------
+    */
+    private function _footerData()
+    {
+        return [
+            'best_seller' => getBook()->limit(6)->get()->toArray(),
+            'top_rated'   => getBook()->limit(6)->get()->toArray()
+        ];
+    }
     /*
     |--------------------------------------------------------------------------
     | GET CURRENT PAGE

@@ -1,0 +1,25 @@
+{
+    "name": "Halaman",
+    "alias": "halaman",
+    "description": "Mengelola Halaman",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Halaman\\Providers\\SP"
+    ],
+    "aliases": [],
+    "files": [
+        "start.php"
+    ],
+    "requires": [],
+    "author": {
+        "name": "Yuda Prawira",
+        "site": "http:\/\/yuda.tk"
+    },
+    "info": {
+        "version": 1,
+        "date": "2017-03-25 14:50:27",
+        "changelog": ""
+    }
+}

@@ -149,30 +149,11 @@ class BaseController extends Controller
     */
     public function _buildAction($id, $name, $type='default')
     {
-        $url_edit = BeUrl($this->currentPath.'/edit/'.$id);
-        $url_delete = BeUrl($this->currentPath.'/delete/'.$id);
+        $url_edit = BeUrl($this->currentPath.'/edit/'.$id.'?'.uniqid());
+        $url_delete = BeUrl($this->currentPath.'/delete/'.$id.'?'.uniqid());
         return view($this->tmpl . 'box.global.button_'.$type, compact('id', 'name', 'url_edit', 'url_delete'));
     }
 
-    /*
-    |--------------------------------------------------------------------------
-    | Validate with error
-    |--------------------------------------------------------------------------
-    */
-    public function setValidator($error)
-    {
-        if ( $error )
-        {
-            foreach( $error->toArray() as $name=>$arrayError )
-            {
-                foreach($arrayError as $e)
-                {
-                    $this->setNotif($e, 'danger', 'right', 'auto', false, $name);
-                }
-            }
-        }
-    }
-    
     /*
     |--------------------------------------------------------------------------
     | DELETE

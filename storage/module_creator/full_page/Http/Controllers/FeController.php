@@ -2,11 +2,13 @@
 
 namespace Modules\___PT___\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Routing\Controller;
+use Redirect,
+    Illuminate\Http\Request,
+    Illuminate\Http\Response,
+    Illuminate\Routing\Controller,
+    App\Http\Controllers\FE\BaseController;
 
-class FeController extends Controller
+class FeController extends BaseController
 {
     /**
      * Display a listing of the resource.

@@ -34,7 +34,7 @@ class BeController extends BaseController
 
             return Datatables::of(Book::query())
             ->addColumn('action', function ($r) { return $this->_buildAction($r->id, $r->title); })
-            ->editColumn('title', function ($r) { return createLink( url(config('book.info.alias').'/'.findParentUrl($r->kategori).'/'.$r->url.'.html'), $r->title ); })
+            ->editColumn('title', function ($r) { return createLink( getBookUrl($r)['detail'], $r->title); })
             ->editColumn('kategori', function ($r) use($cat) { return isset($cat[$r->kategori]) ? $cat[$r->kategori] : '-'; })
             ->editColumn('status', function ($r) { return $r->status=='1' ? trans('global.active') : trans('global.inactive'); })
             ->editColumn('created_at', function ($r) { return formatDate($r->created_at, 5); })

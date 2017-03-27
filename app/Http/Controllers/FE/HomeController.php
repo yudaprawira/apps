@@ -23,9 +23,14 @@ class HomeController extends BaseController
     */
     function index() 
     {
-        $this->dataView['headline'] = getBook()->where('headline', '1')->get();
+        $this->dataView['headline'] = getBook()->where('headline', '1')->get()->toArray();
 
-        $this->dataView['terjual'] = getBook()->where('terjual', '1')->limit(3)->get();
+        $this->dataView['terjual'] = getBook()->where('terjual', '1')->limit(3)->get()->toArray();
+
+        foreach( categoryArray()['parent_id'][0] as $c )
+        {
+            $this->dataView['products'][$c] = getBook()->whereIn('kategori', getCategoryIncluded($c))->limit(4)->get()->toArray();
+        }
         
         return view($this->tmpl . 'homepage', $this->dataView);
     }
