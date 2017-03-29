@@ -49,6 +49,8 @@ return [
     
     'be_url' => 'http://localhost/cms/backend',
 
+    'expired_order' => '+3days',
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

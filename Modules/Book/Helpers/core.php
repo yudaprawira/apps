@@ -36,9 +36,9 @@
         $ori  = implode('-', array_slice(explode('-', $file), 0, count(explode('-', $file))-1));
         
         return [
-            'big' => asset($path.'/'.$ori.'-600x800.'.$extn),
-            'medium' => asset($path.'/'.$ori.'-140x300.'.$extn),
-            'small' => asset($path.'/'.$ori.'-60x60.'.$extn),
+            'big' => asset('media/'.$path.'/'.$ori.'-600x800.'.$extn),
+            'medium' => asset('media/'.$path.'/'.$ori.'-140x300.'.$extn),
+            'small' => asset('media/'.$path.'/'.$ori.'-60x60.'.$extn),
         ];
     }
 ?>

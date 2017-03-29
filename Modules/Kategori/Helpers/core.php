@@ -12,7 +12,7 @@
         
         if(!\Cache::has($cacheKey)) 
         {
-            $category = getRowArray(Kategori::all(), 'id', '*');
+            $category = getRowArray(Kategori::where('status', 1)->get(), 'id', '*');
             
             \Cache::put($cacheKey, $category, 10);
         }

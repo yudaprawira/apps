@@ -94,9 +94,9 @@ class BeController extends BaseController
         {
             $image = $this->_uploadImage($image, 'pengarang', ['600x600', '140x140'], $input['url']);
             
-            if ( isset($image['600x800']) )
+            if ( isset($image['600x600']) )
             {
-                Pengarang::where('id', $status)->update(['image'=>$image['600x800']]);
+                Pengarang::where('id', $status)->update(['image'=>$image['600x600']]);
             }
         }
 

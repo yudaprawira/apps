@@ -1,7 +1,7 @@
 {
     "name": "Akun Bank",
     "alias": "akun-bank",
-    "description": "Mengelola Akun Bank",
+    "description": "Mengelola data rekening bank",
     "keywords": [],
     "active": 1,
     "order": 0,
@@ -19,7 +19,7 @@
     },
     "info": {
         "version": 1,
-        "date": "2017-03-27 14:41:22",
+        "date": "2017-03-28 05:57:30",
         "changelog": ""
     }
 }

@@ -3,12 +3,14 @@
 namespace Modules\Pesanan\Http\Controllers;
 
 use Redirect, Cookie, Input,
+    Session,
     Illuminate\Http\Request,
     Illuminate\Http\Response,
     Illuminate\Routing\Controller,
     Modules\Pesanan\Models\Pesanan,
     Modules\Pesanan\Models\PesananDetail,
     Modules\Pesanan\Models\PesananPembeli,
+    Modules\Pesanan\Models\PesananKonfirmasi,
     App\Http\Controllers\FE\BaseController;
 
 class FeController extends BaseController
@@ -28,6 +30,9 @@ class FeController extends BaseController
     */
     public function index()
     {
+        
+        $this->dataView['title'] = 'Keranjang Belanja | '.config('app.title');
+
         $this->dataView['cart'] = $this->_getRowItem();
 
         return view($this->tmpl . 'cart', $this->dataView);
@@ -40,11 +45,108 @@ class FeController extends BaseController
     */
     public function checkout()
     {
+        //check ember
+        if ( !Session::has('member_id') ) return Redirect( url('member/login?next='.urlencode( url('keranjang/proses') )) );
+
+        $this->dataView['title'] = 'Checkout | '.config('app.title');
+
         $this->dataView['cart'] = $this->_getRowItem();
 
         if ( !$this->dataView['cart'] ) return Redirect(url('keranjang'));
 
         return view($this->tmpl . 'checkout', $this->dataView);
+    }
+        
+    /*
+    |--------------------------------------------------------------------------
+    | KONFIRMASI PEMBAYARAN
+    |--------------------------------------------------------------------------
+    */
+    public function confirm()
+    {
+        if ( !empty($_POST) )
+        {
+            $status = false;
+
+            $input  = Input::except('_token');
+            $image  = isset($input['file']) && $input['file'] ? $input['file'] : null;unset($input['file']);
+            parse_str($input['post'], $params);
+            $input  = $params;
+            unset($input['_image']);
+            unset($input['_token']);
+
+            //validate
+            if ($row = Pesanan::where('invoice', val($input, 'invoice'))->first())
+            {
+                if ( $row->status_pesanan=='PESANAN' || $row->status_pesanan=='BATAL' )
+                {
+                    //expiry
+                    if ( strtotime(config('app.expired_order'), strtotime($row->tanggal)) > time()  )
+                    {
+                        $dataConfirm = [
+                            'pesanan_id' => $row->id,
+                            'akunbank_id' => val($input, 'bank_tujuan'),
+                            'bank_dari' => val($input, 'bank_dari'),
+                            'nama_pemilik' => val($input, 'bank_name'),
+                            'total' => val($input, 'total'),
+                            'tanggal' => dateSQL(),
+                        ];
+                        if ( $confirmID = PesananKonfirmasi::insertGetId($dataConfirm) )
+                        {
+                            if ( $image )
+                            {
+                                $image = $this->_uploadImage($image, 'confirm', ['600x600', '140x140'], $input['invoice']);
+                                
+                                if ( isset($image['600x600']) )
+                                {
+                                    PesananKonfirmasi::where('id', $confirmID)->update(['image'=>$image['600x600']]);
+                                }
+                            }
+
+                            if ( Pesanan::where('invoice', val($input, 'invoice'))->update(['status_pesanan'=>'DIBAYAR']) )
+                            {
+                                $this->setNotif(trans('pesanan::global.confirmed'), 'success', 'center');
+
+                                $status = true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        $this->setNotif(trans('pesanan::global.expiredconfirm'), 'danger', 'center');
+                        //update DB
+                        Pesanan::where('invoice', val($input, 'invoice'))->update(['status_pesanan'=>'BATAL']);
+                    }
+                }
+                else
+                {
+                    $this->setNotif(trans('pesanan::global.paidtrans'), 'danger', 'center');
+                }
+            }
+            else
+            {
+                $this->setNotif(trans('pesanan::global.notfound'), 'danger', 'center');
+            }
+
+            return Response()->json([ 
+                'status'  => $status, 
+                'message' => $this->_buildNotification(true),
+                'redirect'=> $status ? (url('member/login?next='.urlencode(url('member/histori-transaksi?inv='.val($input, 'invoice'))) )) : null
+            ]);
+        }
+        else
+        {
+            $this->dataView['row'] = ( val($_GET, 'inv') ) ? Pesanan::where('invoice', val($_GET, 'inv'))->first() : [];
+            
+            if (  val($this->dataView['row'], 'status_pesanan') !='PESANAN')
+            {
+                return redirect(url('member/login?next='.urlencode(url('member/histori-transaksi?inv='.val($this->dataView['row'], 'invoice'))) ));
+            }
+
+            $this->dataView['title'] = 'Konfirmasi Pembayaran | '.config('app.title');
+
+            return view($this->tmpl . 'member/konfirmasi', $this->dataView);
+        }
     }
 
     /*
@@ -85,12 +187,15 @@ class FeController extends BaseController
         {
             $dataTrans = [
                 'invoice' => createInvoice(),
+                'member_id' => Session::get('member_id'),
                 'tanggal' => dateSQL(),
                 'subtotal' => val($cart, 'total.harga'),
                 'ongkir' => 0,
                 'total' => val($cart, 'total.harga'),
-                'ststus_pesanan' => 'BARU',
+                'status_pesanan' => 'PESANAN',
+                'metode_pembayaran' => $input['metode_pembayaran'],
             ];
+            unset($input['metode_pembayaran']);
             if ( $input['pesanan_id'] = Pesanan::insertGetId($dataTrans) )
             {
                 //insert Pembeli
@@ -120,7 +225,7 @@ class FeController extends BaseController
         return Response()->json([ 
             'status'  => $status, 
             'message' => $this->_buildNotification(true),
-            'redirect'=> $status ? url('keranjang/terima-kasih') : url('keranjang/proses')
+            'redirect'=> $status && $dataTrans ? url('member/histori-transaksi?inv='.$dataTrans['invoice']) : url('keranjang/proses')
         ]);
     }
 
@@ -221,11 +326,11 @@ class FeController extends BaseController
     private function _getRowItem()
     {
         $dataCart = Cookie::has($this->cookieCartName) ? json_decode(Cookie::get($this->cookieCartName), true) : [];
-        
+
+        $ret = ['total'=>['item'=>0, 'qty'=>0, 'harga'=>0, 'berat'=>0]];
+
         if ($row = getBook()->select('id', 'title', 'image', 'url', 'harga', 'harga_sebelum', 'berat', 'tersedia')->whereIn('id', array_keys($dataCart))->get()->toArray())
         {
-            $ret = ['total'=>['item'=>0, 'qty'=>0, 'harga'=>0, 'berat'=>0]];
-
             foreach( $row as $c )
             {
                 $c['qty'] = val($dataCart, $c['id']);
@@ -242,9 +347,9 @@ class FeController extends BaseController
 
                 $ret['data'][$c['id']] = $c;
             }
-
-            return $ret;
         }
+        
+        return $ret;
     }
 
     /*

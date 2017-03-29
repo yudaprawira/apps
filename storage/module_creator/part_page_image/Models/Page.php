@@ -13,5 +13,5 @@ class ___PT___ extends Model
      */
     protected $table = 'mod____SC___';
 
-    protected $fillable = ['title', 'image', 'url', 'status', 'created_by', 'updated_by'];
+    protected $fillable = ['___FIELD_NAME___', 'image', 'url', 'status', 'created_by', 'updated_by'];
 }

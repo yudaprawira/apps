@@ -14,13 +14,14 @@
                     <section class="span12 first">
                 
                         <div class="accordion" id="accordion2">
+                            
                             <div class="accordion-group">
                                 <div class="accordion-heading"> 
-                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseMethod"> Metode </a>
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseMethod"> Akun </a>
                                 </div>
                                 <div id="collapseMethod" class="accordion-body in collapse" style="height:auto;">
                                     <div class="accordion-inner">
-                                        isi content
+                                        Checkout sebagai member, bukan {{ session::get('member_nama') }}? <a href="{{ url('member/logout?next='.urlencode( url('keranjang/proses'))) }}">ganti akun</a>
                                     </div>
                                 </div>
                             </div>
@@ -37,19 +38,19 @@
                                                 <div class="control-group form-group">
                                                     <label class="control-label">Nama <sup>*</sup> <span class="char_count"></span> </label>
                                                     <div class="controls has-feedback">
-                                                        <input class="span12" type="text" name="nama_pembeli" maxlength="50" placeholder="" class=" " require>
+                                                        <input class="span12" type="text" name="nama_pembeli" maxlength="50" value="{{ Session::get('member_nama') }}" placeholder="" class=" " required>
                                                     </div>
                                                 </div>
                                                 <div class="control-group form-group">
                                                     <label class="control-label">Email <sup>*</sup><span class="char_count"></span></label>
                                                     <div class="controls has-feedback">
-                                                        <input class="span12" type="text" name="email_pembeli"maxlength="75"  placeholder="" class=" " require>
+                                                        <input class="span12" type="text" name="email_pembeli"maxlength="75" value="{{ Session::get('member_email') }}" placeholder="" class=" " required>
                                                     </div>
                                                 </div>
                                                 <div class="control-group form-group">
                                                     <label class="control-label">Alamat <sup>*</sup><span class="char_count"></span></label>
                                                     <div class="controls has-feedback">
-                                                        <textarea class="span12" name="alamat_pembeli" require maxlength="255" ></textarea>
+                                                        <textarea class="span12" name="alamat_pembeli" required maxlength="255" >{{ Session::get('member_alamat') }}</textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row-fluid">
@@ -57,7 +58,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="control-label">Provinsi <sup>*</sup><span class="char_count"></span></label>
                                                             <div class="controls has-feedback">
-                                                                <input class="span12" type="text" name="provinsi_pembeli" maxlength="30" placeholder="" class=" " require>
+                                                                <input class="span12" type="text" name="provinsi_pembeli" maxlength="30" placeholder="" class=" " value="{{ Session::get('member_provinsi') }}" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -65,7 +66,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="control-label">Kota <sup>*</sup><span class="char_count"></span></label>
                                                             <div class="controls has-feedback">
-                                                                <input class="span12" type="text" name="kota_pembeli" placeholder="" maxlength="35" class=" " require>
+                                                                <input class="span12" type="text" name="kota_pembeli" placeholder="" maxlength="35" class=" " value="{{ Session::get('member_kota') }}" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -75,7 +76,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="control-label">Telepon <sup>*</sup><span class="char_count"></span></label>
                                                             <div class="controls has-feedback">
-                                                                <input class="span12" type="text" name="telepon_pembeli" placeholder="" maxlength="20" class=" " require>
+                                                                <input class="span12" type="text" name="telepon_pembeli" placeholder="" maxlength="20" class=" " value="{{ Session::get('member_telepon') }}" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -83,30 +84,30 @@
                                                         <div class="control-group form-group">
                                                             <label class="control-label">Kode Pos <span class="char_count"></span></label>
                                                             <div class="controls has-feedback">
-                                                                <input class="span12" type="text" name="kodepos_pembeli" placeholder="" maxlength="5" class=" ">
+                                                                <input class="span12" type="text" name="kodepos_pembeli" placeholder="" maxlength="5" class=" " value="{{ Session::get('member_kodepos') }}" >
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="span6">
-                                                <strong class="green-t"><input type="checkbox" id="cart-checkship" checked style="margin-right: 2px;margin-top: -2px"/>Data Penerima sama dengan Data Pembeli</strong>
+                                                <strong class="green-t"><input type="checkbox" id="cart-checkship" style="margin-right: 2px;margin-top: -2px"/>Data Penerima sama dengan Data Pembeli</strong>
                                                 <div class="control-group form-group">
                                                     <label class="control-label">Nama Penerima<sup>*</sup><span class="char_count"></span></label>
                                                     <div class="controls has-feedback">
-                                                        <input class="span12" type="text" name="nama_penerima" placeholder="" class=" "  maxlength="50" require>
+                                                        <input class="span12" type="text" name="nama_penerima" placeholder="" class=" "  maxlength="50" value=""  required>
                                                     </div>
                                                 </div>
                                                 <div class="control-group form-group">
                                                     <label class="control-label">Email<span class="char_count"></span></label>
                                                     <div class="controls has-feedback">
-                                                        <input class="span12" type="text" name="email_penerima" placeholder="" class=" " maxlength="75">
+                                                        <input class="span12" type="text" name="email_penerima" placeholder="" class=" " maxlength="75" value="" >
                                                     </div>
                                                 </div>
                                                 <div class="control-group form-group">
                                                     <label class="control-label">Alamat yang dituju<sup>*</sup><span class="char_count"></span></label>
                                                     <div class="controls has-feedback">
-                                                        <textarea class="span12" name="alamat_penerima" require maxlength="255"></textarea>
+                                                        <textarea class="span12" name="alamat_penerima" required maxlength="255"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="row-fluid">
@@ -114,7 +115,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="control-label">Provinsi <sup>*</sup><span class="char_count"></span></label>
                                                             <div class="controls has-feedback">
-                                                                <input class="span12" type="text" name="provinsi_penerima" maxlength="30" placeholder="" class=" " require>
+                                                                <input class="span12" type="text" name="provinsi_penerima" maxlength="30" placeholder="" class=" " value=""  required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -122,7 +123,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="control-label">Kota <sup>*</sup><span class="char_count"></span></label>
                                                             <div class="controls has-feedback">
-                                                                <input class="span12" type="text" name="kota_penerima" placeholder="" maxlength="35" class=" " require>
+                                                                <input class="span12" type="text" name="kota_penerima" placeholder="" maxlength="35" class=" " value=""  required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -132,7 +133,7 @@
                                                         <div class="control-group form-group">
                                                             <label class="control-label">Telepon <sup>*</sup><span class="char_count"></span></label>
                                                             <div class="controls has-feedback">
-                                                                <input class="span12" type="text" name="telepon_penerima" placeholder="" maxlength="20" class=" " require>
+                                                                <input class="span12" type="text" name="telepon_penerima" placeholder="" maxlength="20" class=" " value="" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -140,13 +141,35 @@
                                                         <div class="control-group form-group">
                                                             <label class="control-label">Kode Pos <span class="char_count"></span></label>
                                                             <div class="controls has-feedback">
-                                                                <input class="span12" type="text" name="kodepos_penerima" placeholder="" maxlength="5" class=" ">
+                                                                <input class="span12" type="text" name="kodepos_penerima" placeholder="" maxlength="5" class=" " value="" >
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-group">
+                                <div class="accordion-heading"> 
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapsePaymentMethod"> Metode Pembayaran</a>
+                                </div>
+                                <div id="collapsePaymentMethod" class="accordion-body collapse" style="height:0;">
+                                    <div class="accordion-inner">
+                                        <input type="radio" name="metode_pembayaran" value="transfer" checked> Transfer Bank
+                                        <br/><br/>
+                                        <div class="row-fluid">
+                                        @foreach(getBank() as $b)
+                                            <div class="span4">
+                                                <img src="{{ asset( 'media/' . val($b, 'image') ) }}" alt="{{ val($b, 'nama_bank') }}" style="widht: 80px;"/><br/>
+                                                {{ val($b, 'nama_bank') }}</br/>
+                                                A.N : {{ val($b, 'nama_akun') }}</br/>
+                                                Rek : {{ val($b, 'rekening') }}
+                                            </div>
+                                        @endforeach
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -205,26 +228,6 @@
 }
 .price-before{
     display: block;
-}
-textarea {
-    resize: vertical;
-    min-height: 80px!important;
-}
-.inputHighlight {
-    border: 1px solid red!important;
-    background: #ffd9d9!important;
-}
-.char_count{
-    float: right;
-    font-size: 11px;
-    margin-top: 5px;
-    color: #c5c5c5;
-}
-sup, .red {
-    color: red;
-}
-.black {
-    color: #c5c5c5;
 }
 </style>
 @endpush

@@ -10,17 +10,65 @@ use Redirect,
 
 class FeController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     * @return Response
-     */
-    public function index($category, $url)
+    /*
+    |--------------------------------------------------------------------------
+    | INDEX
+    |--------------------------------------------------------------------------
+    */
+    public function index($page=1)
+    {
+        return $this->_buildListItem('KATALOG BUKU', 'book', $page);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | CATEGORY
+    |--------------------------------------------------------------------------
+    */
+    public function category($category)
+    {
+        echo $category.'<br/>';
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | SUB CATEGORY
+    |--------------------------------------------------------------------------
+    */
+    public function subcategory($category, $subcategory)
+    {
+        echo $category.'<br/>';
+        echo $subcategory.'<br/>';
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | DETAIL
+    |--------------------------------------------------------------------------
+    */
+    public function detail($category, $url)
     {
         $this->dataView['row'] = getBook()->where('url', $url)->first();
         
         $this->_validateDetail($category);
 
         return view($this->tmpl . 'detail', $this->dataView);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | LIST ITEM
+    |--------------------------------------------------------------------------
+    */
+    private function _buildListItem($title, $baseUrl, $page)
+    {
+        $this->dataView['title'] = $title.' | '.config('app.title');
+
+        $this->dataView['section'] = $title;
+
+        $this->dataView['rows'] = getBook()->paginate(3, ['*'], 'page', (val($_GET,'page') ? val($_GET,'page') : $page));
+
+        return view($this->tmpl . 'category', $this->dataView);
     }
 
     /*
@@ -56,7 +104,7 @@ class FeController extends BaseController
         }
 
         //set Meta
-        $this->dataView['title'] = ucwords(strtolower($this->dataView['row']['title']));
+        $this->dataView['title'] = ucwords(strtolower($this->dataView['row']['title'])).' | '.config('app.title');
     }
 
 }

@@ -16,4 +16,9 @@ class PesananDetail extends Model
     protected $fillable = ['pesanan_id', 
     'item_id', 'harga', 'qty', 'berat', 'subtotal',
     'created_by', 'updated_by'];
+
+    function item()
+    {
+        return $this->hasOne('Modules\Book\Models\Book', 'id', 'item_id');
+    }
 }

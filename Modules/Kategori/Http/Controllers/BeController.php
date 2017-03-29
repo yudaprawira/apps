@@ -91,6 +91,7 @@ class BeController extends BaseController
         ], $input, 'kategori');
 
         $this->clearCache( config('kategori.info.alias').'/'.$input['url'] );
+        $this->clearCache( 'getCategory' );
                 
         return Response()->json([ 
             'status' => $status, 

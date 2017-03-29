@@ -10,7 +10,7 @@
                 
                 <div class="box-body">
                     <div class="text-center">
-                        <img  src="<?php echo e(val($dataForm, 'image') ? asset(val($dataForm, 'image')) : asset('/global/images/no-image.png')); ?>" id="imagePreview"><br/><br/>
+                        <img  src="<?php echo e(val($dataForm, 'image') ? asset('media/'.val($dataForm, 'image')) : asset('/global/images/no-image.png')); ?>" id="imagePreview"><br/><br/>
                         <a href="#" class="btn btn-sm btn-flat btn-default" id="changeImage"><i class="fa fa-pencil"></i> <?php echo e(trans('book::global.change_image')); ?> </a>
                     </div>
                 </div>

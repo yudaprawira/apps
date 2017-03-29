@@ -5,6 +5,7 @@ use Illuminate\Routing\Controller,
     App\Http\Controllers\BE\BaseController,
     Modules\Pesanan\Models\Pesanan,
     Modules\Pesanan\Models\PesananPembeli,
+    Modules\Pesanan\Models\PesananKonfirmasi,
     Yajra\Datatables\Datatables;
 
 use Input, Session, Request, Redirect;
@@ -45,9 +46,11 @@ class BeController extends BaseController
     */
     public function form($id='')
     {
-        $data = $id ? Pesanan::find($id) : null;
+        $data = $id ? Pesanan::with('detail')->join('mod_pesanan_pembeli', 'mod_pesanan.id', '=', 'mod_pesanan_pembeli.pesanan_id')->find($id) : null;
         
         $this->dataView['dataForm'] = $data ? $data->toArray() : []; 
+
+        $this->dataView['rowConfirm'] = PesananKonfirmasi::where('pesanan_id', val($this->dataView['dataForm'], 'id'))->with('bank')->first();                        
         
         $this->dataView['dataForm']['form_title'] = $data ? trans('global.form_edit') : trans('global.form_add');
 
@@ -83,6 +86,15 @@ class BeController extends BaseController
             //VALIDATOR
             "invoice" => "required|unique:mod_pesanan". ($input['id'] ? ",invoice,".$input['id'] : '')
         ], $input, 'invoice');
+
+        //update Total
+        if ($rowTrans = Pesanan::where('id', $status)->first())
+        {
+            $total = val($rowTrans, 'subtotal', 0);
+            $total+= val($rowTrans, 'ongkir', 0);
+            Pesanan::where('id', $status)->update(['total'=>$total]);
+        }
+        
 
         $this->clearCache( config('pesanan.info.alias').'/'.$input['url'].'.html' );
 

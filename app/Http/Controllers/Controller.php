@@ -94,10 +94,12 @@ class Controller extends BaseController
 
         if ( $img && $img!='undefined' && !empty($size) )
         {
+            $mainPath = 'media/';
+
             $path = $mainDir."/".date("Y/m/d/");
 
             //mkdir
-            if ( !file_exists( public_path($path) ) ) mkdir( public_path($path), 0777, true );
+            if ( !file_exists( public_path($mainPath.$path) ) ) mkdir( public_path($mainPath.$path), 0777, true );
 
             foreach ( $size as $s )
             {
@@ -109,7 +111,7 @@ class Controller extends BaseController
 
                     $filename  = $urlName.'-'.$s.'.'.$img->getClientOriginalExtension();
 
-                    $realPath = public_path($path . $filename);
+                    $realPath = public_path($mainPath . $path . $filename);
 
                     if ($r = Image::make($img->getRealPath())->resize($arrSize[0], $arrSize[1], function ($constraint) use($aspectRatio) {
                         if ($aspectRatio) $constraint->aspectRatio();

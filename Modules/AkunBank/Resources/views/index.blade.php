@@ -11,11 +11,11 @@
                   <table class="table table-striped table-bordered" id="list-table" data-url="{{ BeUrl(config('akunbank.info.alias')) }}" data-token="{{ csrf_token() }}">
                     <thead>
                     <tr>
-                      <th data-sort="1" data-search="1" data-column="id" style="width: 10px">ID</th>
-                      <th data-sort="1" data-search="1" data-column="nama">{{ trans('akunbank::global.nama') }}</th>
+                      <th data-sort="1" data-search="1" data-column="image" style="width: 10px">{{ trans('akunbank::global.image') }}</th>
+                      <th data-sort="1" data-search="1" data-column="nama_bank">{{ trans('akunbank::global.nama_bank') }}</th>
+                      <th data-sort="1" data-search="1" data-column="nama_akun">{{ trans('akunbank::global.nama_akun') }}</th>
+                      <th data-sort="1" data-search="1" data-column="rekening">{{ trans('akunbank::global.rekening') }}</th>
                       <th data-sort="1" data-search="1" data-column="status" class="col-md-1 nowrap">{{ trans('global.status') }}</th>
-                      <th data-sort="1" data-search="1" data-column="created_at" class="col-md-1 nowrap">{{ trans('akunbank::global.created_at') }}</th>
-                      <th data-sort="1" data-search="1" data-column="updated_at" class="col-md-1 nowrap">{{ trans('akunbank::global.updated_at') }}</th>
                       <th data-sort="0" data-search="0" data-column="action" style="width: 90px;white-space: nowrap;">{{ trans('global.action') }}</th>
                     </tr>
                     </thead>
@@ -38,7 +38,6 @@
 #list-table td:nth-child(4),
 #list-table td:nth-child(5){
   white-space: nowrap;
-  text-align: center;
 }
 </style>
 @endpush

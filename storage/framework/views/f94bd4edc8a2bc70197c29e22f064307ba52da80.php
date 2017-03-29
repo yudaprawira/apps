@@ -65,8 +65,8 @@
 <button data-toggle="dropdown" class="btn btn-mini dropdown-toggle" id="json-cart">0 buku - Rp 0<span class="caret"></span></button>
 <ul class="dropdown-menu">
 <li><a href="<?php echo e(url('keranjang')); ?>">Keranjang</a></li>
+<li><a href="<?php echo e(url('keranjang/proses')); ?>">Checkout</a></li>
 <li><a href="<?php echo e(url('keranjang/clear')); ?>">Bersihkan</a></li>
-<li><a href="<?php echo e(url('keranjang/proses')); ?>">Pembayaran</a></li>
 </ul>
 </div>
 </div>
@@ -204,12 +204,14 @@
 <script type="text/javascript" src="<?php echo e($pub_url); ?>/js/easing.js"></script> 
 <script type="text/javascript" src="<?php echo e($pub_url); ?>/js/bs.js"></script> 
 <script type="text/javascript" src="<?php echo e($pub_url); ?>/js/bxslider.js"></script> 
-<script type="text/javascript" src="<?php echo e($pub_url); ?>/js/input-clear.js"></script> 
+<!--script type="text/javascript" src="<?php echo e($pub_url); ?>/js/input-clear.js"></script--> 
 <script src="<?php echo e($pub_url); ?>/js/range-slider.js"></script> 
 <script src="<?php echo e($pub_url); ?>/js/jquery.zoom.js"></script> 
 <script type="text/javascript" src="<?php echo e($pub_url); ?>/js/bookblock.js"></script> 
 <script type="text/javascript" src="<?php echo e($pub_url); ?>/js/social.js"></script> 
 <script src="<?php echo e($pub_url); ?>/js/jquery.booklet.latest.js" type="text/javascript"></script> 
+<script src="<?php echo e(asset('/global/js/number.js')); ?>"></script>
+<script src="<?php echo e(asset('/global/js/main.js')); ?>"></script>
 <script type="text/javascript">
 	    $(function () {		
 	        $("#mybook").booklet({
@@ -258,8 +260,6 @@
 
 <!-- Notif -->
 <script src="<?php echo e(asset('/global/js/jquery.bootstrap-growl.min.js')); ?>"></script>
-<script src="<?php echo e(asset('/global/js/number.js')); ?>"></script>
-<script src="<?php echo e(asset('/global/js/main.js')); ?>"></script>
 
 <script type="text/javascript" src="<?php echo e($pub_url); ?>/js/cookie.js"></script>
 <script type="text/javascript" src="<?php echo e($pub_url); ?>/js/colorswitcher.js"></script>

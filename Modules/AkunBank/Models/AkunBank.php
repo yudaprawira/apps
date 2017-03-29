@@ -13,5 +13,5 @@ class AkunBank extends Model
      */
     protected $table = 'mod_akunbank';
 
-    protected $fillable = ['nama', 'url', 'status', 'created_by', 'updated_by'];
+    protected $fillable = ['nama_bank', 'image', 'nama_akun', 'rekening', 'url', 'status', 'created_by', 'updated_by'];
 }

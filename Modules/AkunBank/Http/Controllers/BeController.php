@@ -30,8 +30,8 @@ class BeController extends BaseController
         else
         {
             return Datatables::of(AkunBank::query())
-            ->addColumn('action', function ($r) { return $this->_buildAction($r->id, $r->nama); })
-            ->editColumn('nama', function ($r) { return createLink( url(config('akunbank.info.alias').'/'.$r->url.'.html'), $r->nama ); })
+            ->addColumn('action', function ($r) { return $this->_buildAction($r->id, $r->nama_bank); })
+            ->editColumn('image', function ($r) { return createImage( asset('media/'.$r->image), '80x40' ); })
             ->editColumn('status', function ($r) { return $r->status=='1' ? trans('global.active') : trans('global.inactive'); })
             ->editColumn('created_at', function ($r) { return formatDate($r->created_at, 5); })
             ->editColumn('updated_at', function ($r) { return $r->updated_at ? formatDate($r->updated_at, 5) : '-'; })
@@ -76,16 +76,33 @@ class BeController extends BaseController
     function save()
     {
         $input  = Input::except('_token');
+        $image  = isset($input['file']) ? $input['file'] : null;unset($input['file']);
+        parse_str($input['post'], $params);
+        $input  = $params;
+        unset($input['_image']);
+        unset($input['_token']);
         
-        $input['url'] = str_slug(trim($input['nama']));
+        $input['url'] = str_slug(trim($input['nama_bank']));
         $input['status'] = val($input, 'status') ? 1 : 0;
 
         $status = $this->_saveData( new AkunBank(), [   
             //VALIDATOR
-            "nama" => "required|unique:mod_akunbank". ($input['id'] ? ",nama,".$input['id'] : '')
-        ], $input, 'nama');
+            "nama_bank" => "required|unique:mod_akunbank". ($input['id'] ? ",nama_bank,".$input['id'] : ''),
+            "nama_akun" => "required",
+            "rekening" => "required"
+        ], $input, 'nama_bank');
 
-        $this->clearCache( config('akunbank.info.alias').'/'.$input['url'].'.html' );
+        if ( $image )
+        {
+            $image = $this->_uploadImage($image, 'akunbank', ['200x100'], $input['url'], false);
+            
+            if ( isset($image['200x100']) )
+            {
+                AkunBank::where('id', $status)->update(['image'=>$image['200x100']]);
+            }
+        }
+
+        $this->clearCache( 'getBank' );
                 
         return Response()->json([ 
             'status' => $status, 

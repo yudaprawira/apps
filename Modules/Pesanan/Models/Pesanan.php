@@ -13,5 +13,10 @@ class Pesanan extends Model
      */
     protected $table = 'mod_pesanan';
 
-    protected $fillable = ['invoice', 'url', 'status', 'created_by', 'updated_by'];
+    protected $fillable = ['invoice', 'metode_pembayaran', 'url', 'status_pesanan', 'ongkir', 'nomor_resi', 'status', 'created_by', 'updated_by'];
+
+    function detail()
+    {
+        return $this->hasMany('Modules\Pesanan\Models\PesananDetail', 'pesanan_id', 'id')->with('item');
+    }
 }

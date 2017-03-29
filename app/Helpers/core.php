@@ -79,6 +79,19 @@ function createLink($url, $title, $target='_blank', $class='')
 {
     return '<a href="'.$url.'" target="'.$target.'" class="'.$class.'">'.$title.'</a>';
 }
+/*
+|--------------------------------------------------------------------------
+| CREATE IMAGE
+|--------------------------------------------------------------------------
+*/
+function createImage($url, $size='')
+{
+    $size = $size ? explode('x', $size) : null;
+
+    return '<img src="'.url($url).'" '.(isset($size[0]) ? 'widht='.$size[0] : '').' '.(isset($size[1]) ? 'height='.$size[1] : '').'/>';
+}
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -352,4 +365,18 @@ function readModulInfo($fileJson)
     {
         return json_decode( file_get_contents($fileJson) ,true);    
     }
+}
+
+/*
+|--------------------------------------------------------------------------
+| PAGING START, END, LIMIT
+|--------------------------------------------------------------------------
+*/
+function paggingInfo($obj)
+{
+    return [
+        'start' => (($obj->currentPage()-1) * $obj->perPage() + 1),
+        'end' => (($obj->currentPage()*$obj->perPage()) > $obj->total() ? $obj->total() : ($obj->currentPage()*$obj->perPage())),
+        'total' => $obj->total()
+    ];
 }

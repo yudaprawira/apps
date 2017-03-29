@@ -6,7 +6,6 @@
             <div class="box">
                 <div class="box-header">
                   <h3 class="box-title">Data {{ config('pesanan.info.name') }} </h3>
-                  <a href="{{ BeUrl(config('pesanan.info.alias').'/add') }}" class="btn btn-primary btn-flat btn-add pull-right">{{ trans('global.add') }} {{ config('pesanan.info.name') }} </a>
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
                   <table class="table table-striped table-bordered" id="list-table" data-url="{{ BeUrl(config('pesanan.info.alias')) }}" data-token="{{ csrf_token() }}">
@@ -14,6 +13,7 @@
                     <tr>
                       <th data-sort="1" data-search="1" data-column="id" style="width: 10px">ID</th>
                       <th data-sort="1" data-search="1" data-column="invoice">{{ trans('pesanan::global.invoice') }}</th>
+                      <th data-sort="1" data-search="1" data-column="status_pesanan" class="col-md-1 nowrap">{{ trans('pesanan::global.status_pesanan') }}</th>
                       <th data-sort="1" data-search="1" data-column="status" class="col-md-1 nowrap">{{ trans('global.status') }}</th>
                       <th data-sort="1" data-search="1" data-column="created_at" class="col-md-1 nowrap">{{ trans('pesanan::global.created_at') }}</th>
                       <th data-sort="1" data-search="1" data-column="updated_at" class="col-md-1 nowrap">{{ trans('pesanan::global.updated_at') }}</th>
@@ -34,7 +34,8 @@
 }
 #list-table td:nth-child(3),
 #list-table td:nth-child(4),
-#list-table td:nth-child(5){
+#list-table td:nth-child(5),
+#list-table td:nth-child(6){
   white-space: nowrap;
   text-align: center;
 }
