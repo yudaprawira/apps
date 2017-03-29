@@ -25,9 +25,13 @@ class FeController extends BaseController
     | CATEGORY
     |--------------------------------------------------------------------------
     */
-    public function category($category)
+    public function category($category, $page=1)
     {
-        echo $category.'<br/>';
+        if ( $category && val(categoryArray()['url_id'], $category))
+        {
+            return $this->_buildListItem(strtoupper(val(categoryArray()['url_name'], $category)), 'book/'.$category, $page);
+        }
+        else abort(404);
     }
 
     /*
@@ -35,7 +39,7 @@ class FeController extends BaseController
     | SUB CATEGORY
     |--------------------------------------------------------------------------
     */
-    public function subcategory($category, $subcategory)
+    public function subcategory($category, $subcategory, $page=1)
     {
         echo $category.'<br/>';
         echo $subcategory.'<br/>';

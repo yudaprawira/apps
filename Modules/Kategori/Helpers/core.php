@@ -27,6 +27,7 @@
             'id_name'   => getRowArray($category, 'id', 'kategori'),
             'id_url'    => getRowArray($category, 'id', 'url'),
             'url_id'    => getRowArray($category, 'url', 'id'),
+            'url_name'    => getRowArray($category, 'url', 'kategori'),
             'id_all'    => getRowArray($category, 'url', '*'),
         ];
     }

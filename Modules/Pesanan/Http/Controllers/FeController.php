@@ -52,7 +52,7 @@ class FeController extends BaseController
 
         $this->dataView['cart'] = $this->_getRowItem();
 
-        if ( !$this->dataView['cart'] ) return Redirect(url('keranjang'));
+        if ( !val($this->dataView['cart'], 'data') ) return Redirect(url('keranjang'));
 
         return view($this->tmpl . 'checkout', $this->dataView);
     }
@@ -158,7 +158,7 @@ class FeController extends BaseController
     {
         $cart = $this->_getRowItem();
 
-        if ( !$cart ) return Redirect(url('keranjang'));
+        if ( !val($cart, 'data') ) return Redirect(url('keranjang'));
 
         $input = Input::except('_token');
         
@@ -195,6 +195,8 @@ class FeController extends BaseController
                 'status_pesanan' => 'PESANAN',
                 'metode_pembayaran' => $input['metode_pembayaran'],
             ];
+            $dataTrans['url'] = str_slug($dataTrans['invoice']);
+
             unset($input['metode_pembayaran']);
             if ( $input['pesanan_id'] = Pesanan::insertGetId($dataTrans) )
             {
