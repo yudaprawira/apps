@@ -33,7 +33,6 @@ class Kernel extends HttpKernel
         'cached' => [
             \App\Http\Middleware\cachedMiddleware::class
         ],
-
         'api' => [
             'throttle:60,1',
         ],

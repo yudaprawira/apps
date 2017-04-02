@@ -7,7 +7,12 @@
         <div class="col-md-4">
             <div class="box">
                 <div class="box-header with-border">
-                  <h3 class="box-title"> {{ trans('book::global.image') }} </h3>
+                        <div class="col-md-1 nowrap">
+                            <div class="form-group has-feedback">
+                                <input type="checkbox" name="status" {{ isset($dataForm['status']) ? (val($dataForm, 'status')=='1' ? 'checked' : '') : 'checked' }} /> {{ trans('global.status_active') }}
+                            </div>
+                        </div>
+
                     <a href="#" class="btn btn-sm btn-flat btn-default pull-right" id="changeImage"><i class="fa fa-pencil"></i> {{ trans('book::global.change_image') }} </a>
                 </div><!-- /.box-header -->
                 <div class="box-body">
@@ -27,7 +32,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="form-group has-feedback">
-                                <input type="checkbox" name="status" {{ isset($dataForm['status']) ? (val($dataForm, 'status')=='1' ? 'checked' : '') : 'checked' }} /> {{ trans('global.status_active') }}
+                                <input type="checkbox" name="rekomendasi" {{ isset($dataForm['rekomendasi']) ? (val($dataForm, 'rekomendasi')=='1' ? 'checked' : '') : '' }} /> {{ trans('book::global.rekomendasi') }}
                             </div>
                         </div>
                         <div class="col-md-3">

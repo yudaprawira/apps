@@ -1,0 +1,25 @@
+{
+    "name": "Whishlist",
+    "alias": "wishlist",
+    "description": "Mengelola data wishlist",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Wishlist\\Providers\\SP"
+    ],
+    "aliases": [],
+    "files": [
+        "start.php"
+    ],
+    "requires": [],
+    "author": {
+        "name": "Yuda Prawira",
+        "site": "http:\/\/yuda.tk"
+    },
+    "info": {
+        "version": 1,
+        "date": "2017-04-01 06:38:06",
+        "changelog": ""
+    }
+}

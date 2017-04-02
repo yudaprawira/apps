@@ -41,6 +41,23 @@ class FeController extends BaseController
     }
     /*
     |--------------------------------------------------------------------------
+    | WISHLIST
+    |--------------------------------------------------------------------------
+    */
+    public function wishlist()
+    {
+        if ( !$this->isLogin ) return $this->rdrLogin;
+            
+        $this->dataView['title'] = 'Histori Transaksi | '.config('app.title');
+
+        $this->dataView['limit_per_page'] = 15;
+        $this->dataView['rows'] = getWishlist()->where('member_id', Session::get('member_id'))
+                                        ->paginate($this->dataView['limit_per_page']);
+        return $this->index('wishlist');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
     | HISTORY TRANSACTION
     |--------------------------------------------------------------------------
     */
@@ -170,7 +187,7 @@ class FeController extends BaseController
                 $this->setNotif(trans('member::global.notfoundmember', ['name'=>$input['username']]), 'danger', 'center');
             }
         }
-
+        
         return Response()->json([ 
             'status'  => $status, 
             'message' => $this->_buildNotification(true),
@@ -254,6 +271,9 @@ class FeController extends BaseController
         {
             if ( $act=='set' )
             {
+                if ( $k=='image' )
+                    $obj->$k = val($obj, 'image') ? asset('media/'.val($obj, 'image')) : asset('/global/images/no-image.png');
+                
                 Session::put('member_'.$k, $obj->$k);
             }
             else

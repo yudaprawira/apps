@@ -127,7 +127,7 @@
             {
                 $url .= '/'.val($categories, 'id_url.'.$c);
 
-                $ret[$c] = createLink( $url, val($categories, 'id_name.'.$c) );
+                $ret[$c] = createLink( $url, val($categories, 'id_name.'.$c), '_self' );
             }
         }
 

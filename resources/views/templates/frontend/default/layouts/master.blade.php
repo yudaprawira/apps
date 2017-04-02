@@ -102,12 +102,12 @@
 <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 <div class="nav-collapse collapse">
 <ul class="nav">
-@foreach($categories['parent_id'][0] as $c)
-	@if( isset($categories['parent_id'][$c]) )
-		<li class="dropdown"> <a class="dropdown-toggle" href="{{ url('book/'.$categories['id_url'][$c]) }}" data-toggle="dropdown">{{ strtoupper($categories['id_name'][$c]) }}<b class="caret"></b> </a>
+@foreach($categories['parent_id'][0] as $p)
+	@if( isset($categories['parent_id'][$p]) )
+		<li class="dropdown"> <a class="dropdown-toggle" href="{{ url('book/'.$categories['id_url'][$p]) }}" data-toggle="dropdown">{{ strtoupper($categories['id_name'][$p]) }}<b class="caret"></b> </a>
 		<ul class="dropdown-menu">
-		@foreach($categories['parent_id'][$c] as $c)
-		<li> <a href="{{ url('book/'.$categories['id_url'][$c]) }}">{{ ucwords($categories['id_name'][$c]) }}</a> </li>
+		@foreach($categories['parent_id'][$p] as $c)
+		<li> <a href="{{ url('book/'.$categories['id_url'][$p].'/'.$categories['id_url'][$c]) }}">{{ ucwords($categories['id_name'][$c]) }}</a> </li>
 		@endforeach
 		</ul>
 	@else

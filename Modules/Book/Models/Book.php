@@ -13,7 +13,7 @@ class Book extends Model
      */
     protected $table = 'mod_book';
 
-    protected $fillable = ['title', 'url', 'status', 'headline', 'tersedia', 'terjual', 'deskripsi', 'kategori', 'pengarang', 'penerbit', 'isbn', 'rilis', 'bahasa', 'berat', 'halaman', 'harga', 'harga_sebelum', 'created_by', 'updated_by'];
+    protected $fillable = ['title', 'url', 'status', 'headline', 'rating', 'tersedia', 'rekomendasi', 'terjual', 'deskripsi', 'kategori', 'pengarang', 'penerbit', 'isbn', 'rilis', 'bahasa', 'berat', 'halaman', 'harga', 'harga_sebelum', 'created_by', 'updated_by'];
 
     function relPengarang()
     {

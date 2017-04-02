@@ -22,6 +22,7 @@
 
         return [
             'detail' => url(config('book.info.alias').'/'.findParentUrl(val($r,'kategori')).'/'.val($r,'url').'.html'),
+            'share' => url(config('book.info.alias').'/'.findParentUrl(val($r,'kategori')).'/'.val($r,'url').'.html'),
             'wish' => url('wishlist/'.findParentUrl(val($r,'kategori')).'/'.val($r,'url').'.html'),
             'cart' => url('keranjang/'.findParentUrl(val($r,'kategori')).'/'.val($r,'url').'.html'),
         ];
@@ -40,5 +41,13 @@
             'medium' => asset('media/'.$path.'/'.$ori.'-140x300.'.$extn),
             'small' => asset('media/'.$path.'/'.$ori.'-60x60.'.$extn),
         ];
+    }
+
+    function getQuickView($data)
+    {
+        $obj['pub_url'] =  url(str_replace('.', '/', config('app.template')));
+        $obj['r'] =  $data;
+
+        return base64_encode(view(config('app.template') . 'layouts.quickView', $obj)); 
     }
 ?>

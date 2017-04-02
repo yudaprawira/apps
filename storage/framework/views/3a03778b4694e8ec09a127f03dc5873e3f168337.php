@@ -1,1 +1,0 @@
-<input type="checkbox" name="checked[<?php echo e($id); ?>]" value="1" />

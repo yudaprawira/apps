@@ -35,6 +35,7 @@ class BaseController extends Controller
         $this->dataView = [
             'title'  => trans('global.dashboard'),
             'notif'  => $this->_buildNotification(),
+            'path'   => $this->currentPath,
             'pub_url'=> url(str_replace('.', '/', config('app.template'))),
             'categories'  => categoryArray(),
             'footer_data' => $this->_footerData(),

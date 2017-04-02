@@ -288,6 +288,8 @@ class FeController extends BaseController
     private function _update($id, $qty=1, $act='add')
     {
         $dataCart = Cookie::has($this->cookieCartName) ? json_decode(Cookie::get($this->cookieCartName), true) : [];
+        
+        $qty = $qty>0?$qty : 1;
 
         if ( $act=='add' )
         {

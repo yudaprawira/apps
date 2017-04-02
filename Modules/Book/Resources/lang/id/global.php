@@ -5,6 +5,7 @@ return [
     'image' => 'Sampul',
     'headline' => 'Headline',
     'tersedia' => 'Tersedia',
+    'rekomendasi' => 'Rekomendasi',
     'terjual' => 'Terjual',
     'deskripsi' => 'Deskripsi',
     'kategori' => 'Kategori',

@@ -90,6 +90,7 @@ class BeController extends BaseController
         $input['terjual'] = val($input, 'terjual') ? 1 : 0;
         $input['headline'] = val($input, 'headline') ? 1 : 0;
         $input['tersedia'] = val($input, 'tersedia') ? 1 : 0;
+        $input['rekomendasi'] = val($input, 'rekomendasi') ? 1 : 0;
 
         $image = isset($input['image']) ? $input['image'] : null; unset($input['image']);
 
@@ -109,9 +110,9 @@ class BeController extends BaseController
             {
                 Book::where('id', $status)->update(['image'=>$image['600x800']]);
             }
+            $this->clearCache( config('book.info.alias').'/'.$input['url'].'.html' );
+            $this->clearCache( 'getQuickview-'.$status );
         }
-
-        $this->clearCache( config('book.info.alias').'/'.$input['url'].'.html' );
 
         return Redirect( BeUrl( config('book.info.alias') .(!$status ? ($input['id']?'/edit/'.$input['id']:'/add') : '') ) );
     }

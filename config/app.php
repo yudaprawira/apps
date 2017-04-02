@@ -128,7 +128,7 @@ return [
     |
     */
 
-    'template' => 'templates.frontend.default.',
+    'template' => 'templates.frontend.bookstore.',
     
     'be_template' => 'templates.adminlte.',
 

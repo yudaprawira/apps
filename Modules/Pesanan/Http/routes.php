@@ -15,6 +15,7 @@ Route::group(['middleware' => 'web', 'prefix' => config('app.backend').'/'.$info
 //FRONT END
 Route::group(['middleware'=>'web', 'prefix' => 'keranjang', 'namespace' => 'Modules\Pesanan\Http\Controllers'], function()
 {
+    Artisan::call('cache:clear');
     Route::get('/', 'FeController@index');//->middleware('cached');
     Route::get('/api', 'FeController@api');//->middleware('cached');
     Route::get('/proses', 'FeController@checkout');

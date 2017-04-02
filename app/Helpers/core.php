@@ -380,3 +380,23 @@ function paggingInfo($obj)
         'total' => $obj->total()
     ];
 }
+
+/*
+|--------------------------------------------------------------------------
+| ROUND DOWN
+|--------------------------------------------------------------------------
+*/
+function roundDown($number, $nearest=0.5)
+{
+    return $number ? ($number - fmod($number, $nearest)) : 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| ROUND UP
+|--------------------------------------------------------------------------
+*/
+function roundUp($number, $nearest=0.5)
+{
+    return $number ? ($number + ($nearest - fmod($number, $nearest))) : 0;
+}

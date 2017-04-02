@@ -22,6 +22,7 @@ Route::group(['middleware'=>['web'], 'prefix' => $info['alias'], 'namespace' => 
     Route::post('/do-register', 'FeController@doRegister');
     Route::post('/do-update', 'FeController@doUpdate');
     Route::get('/register', 'FeController@register');
+    Route::get('/wishlist', 'FeController@wishlist');
     Route::get('/histori-transaksi', 'FeController@historyTrans');
     Route::get('/{url}.html', 'FeController@index')->where('url', '[a-z0-9\-\_\+]+');
 });
